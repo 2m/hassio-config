@@ -1,0 +1,27 @@
+mqtt:
+  sensor:
+    - name: "Temperatūra į katilą"
+      state_topic: prometheus/sensor_0_temperature_celsius
+      suggested_display_precision: 1
+      unit_of_measurement: "°C"
+    - name: "Temperatūra iš radiatorių"
+      state_topic: prometheus/sensor_1_temperature_celsius
+      suggested_display_precision: 1
+      unit_of_measurement: "°C"
+    - name: "Keturėgio atidarymas"
+      state_topic: prometheus/valve_open_ratio
+      suggested_display_precision: 1
+      unit_of_measurement: "%"
+      icon: mdi:pipe-valve
+      value_template: "{{ ((value | float) * 100) | int }}"
+  number:
+    - name: "Keturėgio valdymo vidurinė temperatūra"
+      command_topic: home/4way_valve/middle_temp
+      state_topic: home/4way_valve/middle_temp
+      device_class: temperature
+      mode: box
+    - name: "Keturėgio valdymo apatinė temperatūra"
+      command_topic: home/4way_valve/bottom_temp
+      state_topic: home/4way_valve/bottom_temp
+      device_class: temperature
+      mode: box

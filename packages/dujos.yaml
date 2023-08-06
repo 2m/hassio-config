@@ -1,0 +1,13 @@
+counter:
+  duju_skaitliukas:
+    name: "Dujų Skaitliukas"
+    step: 1
+
+template:    
+  - sensor:
+    - name: "Dujų Skaitliukas"
+      device_class: gas
+      unit_of_measurement: "m³"
+      state_class: "total_increasing"
+      icon: "mdi:fire"
+      state: "{{ states('counter.duju_skaitliukas') | float * 0.01}}"

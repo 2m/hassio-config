@@ -1,0 +1,26 @@
+switch:
+  - platform: template
+    switches:
+      gyvatukas:
+        turn_on:
+          service: system_log.write
+          data:
+            message: "Gyvatukas įjungtas"
+            level: info
+        turn_off:
+          service: system_log.write
+          data:
+            message: "Gyvatukas išjungtas"
+            level: info
+            
+template:
+  - sensor:
+    - name: "Gyvatuko temperatūra"
+      unit_of_measurement: "°C"
+      state: 18
+      
+climate:
+  - platform: generic_thermostat
+    name: Gyvatukas
+    heater: switch.gyvatukas
+    target_sensor: sensor.gyvatuko_temperatura
