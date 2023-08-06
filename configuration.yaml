@@ -1,0 +1,109 @@
+
+# Configure a default setup of Home Assistant (frontend, api, etc)
+default_config:
+
+# Text to speech
+tts:
+  - platform: google_translate
+  
+homeassistant:
+  auth_providers:
+    - type: trusted_networks
+      trusted_networks:
+        - 127.0.0.1/32
+        - 100.0.0.0/8
+        - 192.168.86.0/24
+      allow_bypass_login: true
+    - type: homeassistant
+  packages: !include_dir_named packages
+  allowlist_external_dirs:
+    - /config
+  
+http:
+  server_port: 443
+  ssl_certificate: /ssl/fullchain.pem
+  ssl_key: /ssl/privkey.pem
+    
+mqtt:
+  switch:
+    - name: "Dujinis Katilas"
+      state_topic: "tehybug/switch1/stat/RESULT"  
+      value_template: "{{ value_json.POWER }}"
+      command_topic: "tehybug/switch1/cmnd/POWER"
+      payload_on: "ON"
+      payload_off: "OFF"
+      availability_topic: "tehybug/switch1/tele/LWT"
+      payload_available: "Online"
+      payload_not_available: "Offline"
+      qos: 1
+      retain: false
+      
+input_select:
+  sildymas:
+    name: Šildymas
+    options:
+      - Kietas kuras
+      - Dujos
+      - Gyvatukas vasarą
+    icon: mdi:fire-circle
+    
+template:
+  binary_sensor:
+    - name: "Dujinis Katilas"
+      state: "{{ expand('group.thermostats') | selectattr('attributes.hvac_action', '==', 'heating') | list | count  }}"
+  sensor:
+    - name: "Svetainės Radiatorius Setpoint"
+      unit_of_measurement: "°C"
+      state: "{{ states.climate.svetaines_radiatorius.attributes.temperature }}"
+    - name: "Virtuvės Radiatorius Setpoint"
+      unit_of_measurement: "°C"
+      state: "{{ states.climate.virtuves_radiatorius.attributes.temperature }}"
+    - name: "Mamos Radiatorius Setpoint"
+      unit_of_measurement: "°C"
+      state: "{{ states.climate.mamos_radiatorius.attributes.temperature }}"
+    - name: "Tetės Radiatorius Setpoint"
+      unit_of_measurement: "°C"
+      state: "{{ states.climate.tetes_radiatorius.attributes.temperature }}"
+
+shell_command:
+  set_radiator_temperature: "curl {{ radiator }}/ext_t?temp={{ temp }}"
+  shelly_trv_log: "bash -c \"curl {{ radiator }}/debug/log | tee /config/shelly-log.log\""
+
+group: !include groups.yaml
+automation: !include automations.yaml
+script: !include scripts.yaml
+scene: !include scenes.yaml
+
+logger:
+  default: warning
+  logs:
+    custom_components.scheduler: debug
+    homeassistant.components.nest: debug
+    homeassistant.components.nest.climate_sdm: debug
+    homeassistant.components.nest.camera_sdm: debug
+    homeassistant.components.nest.sensor_sdm: debug
+    homeassistant.helpers.config_entry_flow: debug
+    homeassistant.helpers.config_entry_oauth2_flow: debug
+    google_nest_sdm: debug
+    google_nest_sdm.device: debug
+    google_nest_sdm.device_manager: debug
+    google_nest_sdm.google_nest_subscriber: debug
+    google_nest_sdm.event: debug
+    homeassistant.components.command_line: debug
+    
+recorder:
+  exclude:
+    entity_globs:
+      - sensor.*_high_freq
+
+influxdb:
+  api_version: 2
+  host: europe-west1-1.gcp.cloud2.influxdata.com
+  token: !secret influxdb_token
+  organization: 908bc51ee421d3a8
+  bucket: hassio_ginkunai
+  tags:
+    source: HA
+  tags_attributes:
+    - friendly_name
+  default_measurement: units
