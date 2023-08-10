@@ -5,8 +5,36 @@ mqtt:
       unique_id: openmower_position_accuracy_high_freq
       device_class: distance
       icon: mdi:ruler
-      value_template: "{{ value_json.pose.pos_accuracy }}"
+      value_template: "{{ value_json.pose.pos_accuracy | round(3) }}"
       unit_of_measurement: "m"
+
+    - state_topic: "robot_state/json"
+      name: "OpenMower Position Lat High Freq"
+      unique_id: openmower_position_lat_high_freq
+      icon: mdi:ruler
+      value_template: >-
+        {# https://stackoverflow.com/a/50506609 #}
+        {% set earth = 6378.137 %}
+        {% set pi = 3.14159265 %}
+        {% set m = (1 / ((2 * pi / 360) * earth)) / 1000 %}
+        {% set datum_lat = 55.952423 %}
+        {% set datum_lon = 23.350276 %}
+        {{ datum_lat + (value_json.pose.y * m) }}
+      unit_of_measurement: "°"
+
+    - state_topic: "robot_state/json"
+      name: "OpenMower Position Lon High Freq"
+      unique_id: openmower_position_lon_high_freq
+      icon: mdi:ruler
+      value_template: >-
+        {# https://stackoverflow.com/a/50506609 #}
+        {% set earth = 6378.137 %}
+        {% set pi = 3.14159265 %}
+        {% set m = (1 / ((2 * pi / 360) * earth)) / 1000 %}
+        {% set datum_lat = 55.952423 %}
+        {% set datum_lon = 23.350276 %}
+        {{ datum_lon + (value_json.pose.x * m) / cos(datum_lat * (pi / 180)) }}
+      unit_of_measurement: "°"
   
     - state_topic: "sensors/om_mow_esc_temp/data"
       name: "OpenMower Mower ESC Temperature High Freq"
@@ -98,6 +126,8 @@ sensor:
     filters:
       - filter: time_throttle
         window_size: "00:00:02"
+      - filter: range
+        upper_bound: 2
   - platform: filter
     name: "OpenMower Mower ESC Temperature"
     entity_id: sensor.openmower_mower_esc_temperature_high_freq

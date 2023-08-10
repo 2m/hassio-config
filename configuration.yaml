@@ -13,6 +13,7 @@ homeassistant:
         - 127.0.0.1/32
         - 100.0.0.0/8
         - 192.168.86.0/24
+        - 172.30.32.0/24
       allow_bypass_login: true
     - type: homeassistant
   packages: !include_dir_named packages
@@ -20,9 +21,9 @@ homeassistant:
     - /config
   
 http:
-  server_port: 443
-  ssl_certificate: /ssl/fullchain.pem
-  ssl_key: /ssl/privkey.pem
+  use_x_forwarded_for: true
+  trusted_proxies:
+    - 172.30.33.6
     
 mqtt:
   switch:
@@ -90,20 +91,9 @@ logger:
     google_nest_sdm.google_nest_subscriber: debug
     google_nest_sdm.event: debug
     homeassistant.components.command_line: debug
+    #homeassistant.components.http: debug
     
 recorder:
   exclude:
     entity_globs:
       - sensor.*_high_freq
-
-influxdb:
-  api_version: 2
-  host: europe-west1-1.gcp.cloud2.influxdata.com
-  token: !secret influxdb_token
-  organization: 908bc51ee421d3a8
-  bucket: hassio_ginkunai
-  tags:
-    source: HA
-  tags_attributes:
-    - friendly_name
-  default_measurement: units
