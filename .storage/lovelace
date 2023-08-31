@@ -1,0 +1,554 @@
+{
+  "version": 1,
+  "minor_version": 1,
+  "key": "lovelace",
+  "data": {
+    "config": {
+      "title": "Ginkūnai",
+      "views": [
+        {
+          "theme": "Backend-selected",
+          "icon": "mdi:fire-circle",
+          "title": "Šildymas",
+          "path": "sildymas",
+          "badges": [],
+          "cards": [
+            {
+              "type": "vertical-stack",
+              "cards": [
+                {
+                  "type": "custom:better-thermostat-ui-card",
+                  "entity": "climate.mamos_radiatorius",
+                  "name": "Mamos Termostatas",
+                  "disable_window": true,
+                  "disable_summer": true,
+                  "disable_eco": true,
+                  "disable_heat": true,
+                  "disable_off": true,
+                  "set_current_as_main": false
+                },
+                {
+                  "type": "custom:better-thermostat-ui-card",
+                  "entity": "climate.svetaines_radiatorius",
+                  "name": "Svetainės Termostatas",
+                  "disable_window": true,
+                  "disable_summer": true,
+                  "disable_eco": true,
+                  "disable_heat": true,
+                  "disable_off": true,
+                  "set_current_as_main": false
+                },
+                {
+                  "type": "custom:better-thermostat-ui-card",
+                  "entity": "climate.tetes_radiatorius",
+                  "name": "Tetės Termostatas",
+                  "disable_window": true,
+                  "disable_summer": true,
+                  "disable_eco": true,
+                  "disable_heat": true,
+                  "disable_off": true,
+                  "set_current_as_main": false
+                },
+                {
+                  "type": "custom:better-thermostat-ui-card",
+                  "entity": "climate.virtuves_radiatorius",
+                  "name": "Virtuvės Termostatas",
+                  "disable_window": true,
+                  "disable_summer": true,
+                  "disable_eco": true,
+                  "disable_heat": true,
+                  "disable_off": true,
+                  "set_current_as_main": false
+                },
+                {
+                  "type": "custom:better-thermostat-ui-card",
+                  "entity": "climate.gyvatukas",
+                  "name": "Gyvatukas",
+                  "disable_eco": true,
+                  "disable_heat": true,
+                  "disable_off": true,
+                  "set_current_as_main": false
+                },
+                {
+                  "type": "tile",
+                  "entity": "binary_sensor.dujinis_katilas",
+                  "icon": "mdi:water-boiler",
+                  "vertical": true
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "path": "default_view",
+          "title": "Home",
+          "cards": [
+            {
+              "type": "history-graph",
+              "entities": [
+                {
+                  "entity": "sensor.mamos_termometras_temperature",
+                  "name": "Mamos termometras"
+                },
+                {
+                  "entity": "sensor.svetaines_termometras_temperature",
+                  "name": "Svetainės termometras"
+                },
+                {
+                  "entity": "sensor.tetes_termometras_temperature",
+                  "name": "Tetės termometras"
+                },
+                {
+                  "entity": "sensor.virtuves_termometras_temperature",
+                  "name": "Virtuvės termometras"
+                }
+              ],
+              "hours_to_show": 24,
+              "refresh_interval": 0,
+              "title": "Temperatūra"
+            },
+            {
+              "show_name": true,
+              "show_icon": true,
+              "show_state": true,
+              "type": "glance",
+              "entities": [
+                {
+                  "entity": "sensor.mamos_termometras_temperature",
+                  "name": "Mamos termometras"
+                },
+                {
+                  "entity": "sensor.svetaines_termometras_temperature",
+                  "name": "Svetainės Termometras"
+                },
+                {
+                  "entity": "sensor.tetes_termometras_temperature",
+                  "name": "Tetės termometras"
+                },
+                {
+                  "entity": "sensor.virtuves_termometras_temperature",
+                  "name": "Virtuvės termometras"
+                }
+              ],
+              "state_color": false,
+              "columns": 3
+            },
+            {
+              "show_name": true,
+              "show_icon": true,
+              "show_state": true,
+              "type": "glance",
+              "entities": [
+                {
+                  "entity": "number.mamos_radiatorius_valve_position",
+                  "name": "Mamos"
+                },
+                {
+                  "entity": "number.svetaines_radiatorius_valve_position",
+                  "name": "Svetainės"
+                },
+                {
+                  "entity": "number.tetes_radiatorius_valve_position",
+                  "name": "Tetės"
+                },
+                {
+                  "entity": "number.virtuves_radiatorius_valve_position",
+                  "name": "Virtuvės"
+                }
+              ],
+              "title": "Radiatoriai"
+            },
+            {
+              "type": "entities",
+              "entities": [
+                "sun.sun"
+              ],
+              "title": "Sun"
+            },
+            {
+              "type": "weather-forecast",
+              "entity": "weather.ginkunai",
+              "show_forecast": false
+            },
+            {
+              "type": "history-graph",
+              "entities": [
+                {
+                  "entity": "sensor.temperature_1",
+                  "name": "Daviklis 1"
+                },
+                {
+                  "entity": "sensor.temperature_2",
+                  "name": "Daviklis 2"
+                },
+                {
+                  "entity": "sensor.temperature_3",
+                  "name": "Daviklis 3"
+                },
+                {
+                  "entity": "sensor.temperature_4",
+                  "name": "Daviklis 4"
+                }
+              ],
+              "hours_to_show": 24,
+              "refresh_interval": 0,
+              "title": "Katilo Temperatūros"
+            },
+            {
+              "show_name": true,
+              "show_icon": true,
+              "show_state": true,
+              "type": "glance",
+              "entities": [
+                {
+                  "entity": "sensor.mamos_radiatorius_battery",
+                  "name": "Mamos Radiatorius"
+                },
+                {
+                  "entity": "sensor.mamos_termometras_battery",
+                  "name": "Mamos Termometras"
+                },
+                {
+                  "entity": "sensor.svetaines_radiatorius_battery",
+                  "name": "Svetainės Radiatorius"
+                },
+                {
+                  "entity": "sensor.svetaines_termometras_battery",
+                  "name": "Svetainės Termometras"
+                },
+                {
+                  "entity": "sensor.tetes_radiatorius_battery",
+                  "name": "Tetės Radiatorius"
+                },
+                {
+                  "entity": "sensor.tetes_termometras_battery",
+                  "name": "Tetės Termometras"
+                },
+                {
+                  "entity": "sensor.virtuves_radiatorius_battery",
+                  "name": "Virtuvės Radiatorius"
+                },
+                {
+                  "entity": "sensor.virtuves_termometras_battery",
+                  "name": "Virtuvės Termometras"
+                }
+              ],
+              "title": "Baterijos",
+              "columns": 2
+            }
+          ]
+        },
+        {
+          "theme": "Backend-selected",
+          "icon": "mdi:clock-outline",
+          "badges": [],
+          "cards": [
+            {
+              "type": "vertical-stack",
+              "cards": [
+                {
+                  "type": "entities",
+                  "entities": [
+                    {
+                      "entity": "input_select.sildymas"
+                    }
+                  ],
+                  "show_header_toggle": false,
+                  "state_color": false
+                },
+                {
+                  "type": "custom:scheduler-card",
+                  "include": [
+                    "climate",
+                    "input_select"
+                  ],
+                  "exclude": [],
+                  "title": "Šildymas kietu kuru",
+                  "tags": [
+                    "kietas kuras"
+                  ],
+                  "show_header_toggle": false,
+                  "display_options": {
+                    "primary_info": "default",
+                    "secondary_info": [
+                      "relative-time"
+                    ],
+                    "icon": "action"
+                  },
+                  "sort_by": [
+                    "state",
+                    "title"
+                  ]
+                },
+                {
+                  "type": "custom:scheduler-card",
+                  "include": [
+                    "climate",
+                    "input_select"
+                  ],
+                  "exclude": [],
+                  "sort_by": [
+                    "title"
+                  ],
+                  "tags": [
+                    "dujos"
+                  ],
+                  "title": "Šildymas dujomis",
+                  "display_options": {
+                    "primary_info": "default",
+                    "secondary_info": [
+                      "relative-time"
+                    ],
+                    "icon": "action"
+                  }
+                },
+                {
+                  "type": "custom:scheduler-card",
+                  "include": [
+                    "climate",
+                    "input_select"
+                  ],
+                  "exclude": [],
+                  "title": "Gyvatuko šildymas vasarą",
+                  "tags": [
+                    "gyvatukas vasarą"
+                  ],
+                  "display_options": {
+                    "primary_info": "default",
+                    "secondary_info": [
+                      "relative-time"
+                    ],
+                    "icon": "action"
+                  },
+                  "sort_by": [
+                    "state",
+                    "title"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "Backend-selected",
+          "type": "panel",
+          "icon": "mdi:chart-areaspline",
+          "badges": [],
+          "cards": [
+            {
+              "type": "iframe",
+              "url": "https://hassio.ginkunai.2m.lt:8081/api/hassio_ingress/MehC7yu0_Ex1jkrl29_lx-xx0t_7Kncx8TR55ZaGEYY/d/8mOHtH-4z/sildymas?orgId=1&var-room=All&theme=light&kiosk=tv",
+              "aspect_ratio": "50%"
+            }
+          ]
+        },
+        {
+          "icon": "mdi:robot-mower",
+          "badges": [],
+          "cards": [
+            {
+              "type": "vertical-stack",
+              "cards": [
+                {
+                  "type": "glance",
+                  "entities": [
+                    {
+                      "entity": "binary_sensor.openmower_emergency",
+                      "name": "Emergency"
+                    },
+                    {
+                      "entity": "sensor.openmower_state",
+                      "name": "State"
+                    },
+                    {
+                      "entity": "sensor.openmower_position_accuracy",
+                      "name": "GPS Accuracy"
+                    }
+                  ]
+                },
+                {
+                  "type": "glance",
+                  "entities": [
+                    {
+                      "entity": "sensor.openmower_battery_percentage",
+                      "name": "Battery"
+                    },
+                    {
+                      "entity": "sensor.openmower_battery_voltage",
+                      "name": "Battery"
+                    },
+                    {
+                      "entity": "binary_sensor.openmower_charging",
+                      "name": "Battery"
+                    },
+                    {
+                      "entity": "sensor.openmower_charge_current",
+                      "name": "Currrent"
+                    },
+                    {
+                      "entity": "sensor.openmower_charge_voltage",
+                      "name": "Voltage"
+                    }
+                  ]
+                },
+                {
+                  "type": "glance",
+                  "entities": [
+                    {
+                      "entity": "sensor.openmower_left_esc_temperature",
+                      "name": "Left ESC"
+                    },
+                    {
+                      "entity": "sensor.openmower_right_esc_temperature",
+                      "name": "Right ESC"
+                    },
+                    {
+                      "entity": "sensor.openmower_mower_esc_temperature",
+                      "name": "Mower ESC"
+                    },
+                    {
+                      "entity": "sensor.openmower_mower_motor_temperature",
+                      "name": "Mower Motor"
+                    }
+                  ]
+                },
+                {
+                  "type": "horizontal-stack",
+                  "cards": [
+                    {
+                      "type": "glance",
+                      "entities": [
+                        {
+                          "entity": "sensor.openmower_rpi_cpu_frequency",
+                          "name": "RPi CPU"
+                        },
+                        {
+                          "entity": "sensor.openmower_rpi_cpu_temperature",
+                          "name": "RPi CPU"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "gauge",
+                      "entity": "sensor.openmower_rpi_wifi_signal_strength",
+                      "name": "RPi WiFi",
+                      "needle": true,
+                      "severity": {
+                        "green": -70,
+                        "yellow": -75,
+                        "red": -80
+                      },
+                      "min": -80,
+                      "max": -30
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "icon": "mdi:fireplace",
+          "badges": [],
+          "cards": [
+            {
+              "type": "vertical-stack",
+              "cards": [
+                {
+                  "type": "markdown",
+                  "content": "# Kieto kuro katilo valdymas"
+                },
+                {
+                  "type": "horizontal-stack",
+                  "cards": [
+                    {
+                      "type": "gauge",
+                      "entity": "sensor.temperatura_i_katila",
+                      "name": "Į katilą",
+                      "needle": true,
+                      "severity": {
+                        "green": 40,
+                        "yellow": 70,
+                        "red": 95
+                      }
+                    },
+                    {
+                      "type": "gauge",
+                      "entity": "sensor.temperatura_is_radiatoriu",
+                      "needle": true,
+                      "name": "Iš radiatorių",
+                      "severity": {
+                        "green": 40,
+                        "yellow": 70,
+                        "red": 95
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "horizontal-stack",
+                  "cards": [
+                    {
+                      "type": "entity",
+                      "entity": "number.keturegio_valdymo_apatine_temperatura",
+                      "name": "Valdymo Apatinė",
+                      "unit": "°C"
+                    },
+                    {
+                      "type": "entity",
+                      "entity": "number.keturegio_valdymo_vidurine_temperatura",
+                      "name": "Valdymo Vidurinė",
+                      "unit": "°C"
+                    }
+                  ]
+                },
+                {
+                  "type": "entity",
+                  "entity": "sensor.keturegio_atidarymas"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "path": "dujos",
+          "icon": "mdi:water-boiler",
+          "title": "Dujos",
+          "badges": [],
+          "cards": [
+            {
+              "type": "custom:tabbed-card",
+              "tabs": [
+                {
+                  "card": {
+                    "type": "entities",
+                    "entities": [
+                      {
+                        "entity": "sensor.duju_skaitliukas"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "card": {
+                    "type": "entities",
+                    "entities": [
+                      {
+                        "entity": "input_number.duju_skaitliukas"
+                      }
+                    ]
+                  },
+                  "attributes": {
+                    "icon": "mdi:cog",
+                    "minWidth": false,
+                    "isMinWidthIndicator": true
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

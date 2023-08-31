@@ -1,0 +1,24 @@
+{
+  "version": 1,
+  "minor_version": 1,
+  "key": "lovelace_resources",
+  "data": {
+    "items": [
+      {
+        "url": "/hacsfiles/better-thermostat-ui-card/better-thermostat-ui-card.js?hacstag=439367892111",
+        "type": "module",
+        "id": "225d902a113f46369414cf2351c69257"
+      },
+      {
+        "url": "/hacsfiles/scheduler-card/scheduler-card.js?hacstag=2862701573210",
+        "type": "module",
+        "id": "d0e1a749536948859a04cb9aa928d80b"
+      },
+      {
+        "id": "b70c7ad5fa434e0c9060318fbae38431",
+        "url": "/hacsfiles/tabbed-card/tabbed-card.js?hacstag=452866308031",
+        "type": "module"
+      }
+    ]
+  }
+}
