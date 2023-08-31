@@ -1,0 +1,8 @@
+thermostats:
+  name: Termostatai
+  entities:
+    - climate.mamos_radiatorius
+    - climate.tetes_radiatorius
+    - climate.virtuves_radiatorius
+    - climate.svetaines_radiatorius
+    - climate.gyvatukas
