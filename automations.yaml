@@ -1,0 +1,145 @@
+- id: '1675269792899'
+  alias: Dujinio Katilo Įjungimas
+  description: ''
+  trigger:
+  - platform: state
+    entity_id:
+    - binary_sensor.dujinis_katilas
+    to: 'on'
+  condition: []
+  action:
+  - service: switch.turn_on
+    data: {}
+    target:
+      entity_id: switch.dujinis_katilas
+  mode: single
+- id: '1675269887261'
+  alias: Dujinio Katilo išjungimas
+  description: ''
+  trigger:
+  - platform: state
+    entity_id:
+    - binary_sensor.dujinis_katilas
+    to: 'off'
+  condition: []
+  action:
+  - service: switch.turn_off
+    data: {}
+    target:
+      entity_id: switch.dujinis_katilas
+  mode: single
+- id: '1675270001903'
+  alias: Let's Encrypt Renewal
+  description: ''
+  trigger:
+  - platform: time
+    at: 01:25:00
+  condition: []
+  action:
+  - service: hassio.addon_restart
+    data:
+      addon: core_letsencrypt
+  mode: single
+- id: '1677594121187'
+  alias: Mamos Termometras -> Radiatorius
+  description: ''
+  trigger:
+  - platform: state
+    entity_id:
+    - sensor.mamos_termometras_temperature
+  condition: []
+  action:
+  - service: shell_command.set_radiator_temperature
+    data:
+      radiator: '{{ device_attr(''climate.mamos_radiatorius'', ''configuration_url'')
+        }}'
+      temp: '{{ states.sensor.mamos_termometras_temperature.state }}'
+  mode: single
+- id: '1677594121188'
+  alias: Svetainės Termometras -> Radiatorius
+  description: ''
+  trigger:
+  - platform: state
+    entity_id:
+    - sensor.svetaines_termometras_temperature
+  condition: []
+  action:
+  - service: shell_command.set_radiator_temperature
+    data:
+      radiator: '{{ device_attr(''climate.svetaines_radiatorius'', ''configuration_url'')
+        }}'
+      temp: '{{ states.sensor.svetaines_termometras_temperature.state }}'
+  mode: single
+- id: '1677594121189'
+  alias: Tetės Termometras -> Radiatorius
+  description: ''
+  trigger:
+  - platform: state
+    entity_id:
+    - sensor.tetes_termometras_temperature
+  condition: []
+  action:
+  - service: shell_command.set_radiator_temperature
+    data:
+      radiator: '{{ device_attr(''climate.tetes_radiatorius'', ''configuration_url'')
+        }}'
+      temp: '{{ states.sensor.tetes_termometras_temperature.state }}'
+  mode: single
+- id: '1677594121190'
+  alias: Virtuvės Termometras -> Radiatorius
+  description: ''
+  trigger:
+  - platform: state
+    entity_id:
+    - sensor.virtuves_termometras_temperature
+  condition: []
+  action:
+  - service: shell_command.set_radiator_temperature
+    data:
+      radiator: '{{ device_attr(''climate.virtuves_radiatorius'', ''configuration_url'')
+        }}'
+      temp: '{{ states.sensor.virtuves_termometras_temperature.state }}'
+  mode: single
+- id: '1678554726682'
+  alias: Mamos Radiatorius Debug
+  description: ''
+  trigger:
+  - platform: template
+    value_template: '{{ states.climate.mamos_radiatorius.attributes.current_temperature
+      > 100 }}'
+  condition: []
+  action:
+  - service: shell_command.shelly_trv_log
+    data:
+      radiator: 192.168.86.24
+  mode: single
+- id: '1678554726683'
+  alias: Svetaines Radiatorius Debug
+  description: ''
+  trigger:
+  - platform: template
+    value_template: '{{ states.climate.svetaines_radiatorius.attributes.current_temperature
+      > 100 }}'
+  condition: []
+  action:
+  - service: shell_command.shelly_trv_log
+    data:
+      radiator: '{{ device_attr(''climate.svetaines_radiatorius'', ''configuration_url'')
+        }}'
+  mode: single
+- id: '1686155326522'
+  alias: Dujų Skaitliuko Skaičiuoklė
+  description: ''
+  trigger:
+  - platform: state
+    entity_id:
+    - binary_sensor.pulse_detected
+    from: 'off'
+    to: 'on'
+  condition: []
+  action:
+  - service: input_number.increment
+    data: {}
+    target:
+      entity_id: input_number.duju_skaitliukas
+  mode: single
