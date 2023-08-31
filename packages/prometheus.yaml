@@ -1,0 +1,26 @@
+prometheus:
+  filter:
+    include_domains:
+      - sensor
+      - binary_sensor
+      - light
+      - switch
+      - cover
+      - climate
+      - input_boolean
+      - input_select
+      - number
+      - lock
+      - weather
+    exclude_entity_globs:
+      - sensor.clock*
+      - sensor.date*
+      - sensor.glances*
+      - sensor.time*
+      - sensor.uptime*
+      - sensor.dwd_weather_warnings_*
+      - weather.weatherstation
+      - binary_sensor.*_smartphone_*
+      - sensor.*_smartphone_*
+      - sensor.adguard_home_*
+      - binary_sensor.*_internet_access

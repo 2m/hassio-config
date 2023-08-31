@@ -14,9 +14,9 @@ mqtt:
       icon: mdi:ruler
       value_template: >-
         {# https://stackoverflow.com/a/50506609 #}
-        {% set earth = 6378.137 %}
-        {% set pi = 3.14159265 %}
-        {% set m = (1 / ((2 * pi / 360) * earth)) / 1000 %}
+        {# https://github.com/Turfjs/turf/issues/635#issuecomment-292011500 #}
+        {% set earth = 6371008.8 %}
+        {% set m = 1 / ((2 * pi / 360) * earth) %}
         {% set datum_lat = 55.952423 %}
         {% set datum_lon = 23.350276 %}
         {{ datum_lat + (value_json.pose.y * m) }}
@@ -28,9 +28,9 @@ mqtt:
       icon: mdi:ruler
       value_template: >-
         {# https://stackoverflow.com/a/50506609 #}
-        {% set earth = 6378.137 %}
-        {% set pi = 3.14159265 %}
-        {% set m = (1 / ((2 * pi / 360) * earth)) / 1000 %}
+        {# https://github.com/Turfjs/turf/issues/635#issuecomment-292011500 #}
+        {% set earth = 6371008.8 %}
+        {% set m = 1 / ((2 * pi / 360) * earth) %}
         {% set datum_lat = 55.952423 %}
         {% set datum_lon = 23.350276 %}
         {{ datum_lon + (value_json.pose.x * m) / cos(datum_lat * (pi / 180)) }}
@@ -180,7 +180,7 @@ sensor:
 command_line:
   - sensor:
       name: "OpenMower RPi CPU Frequency"
-      command: "ssh -i /config/.ssh/id_rsa openmower@openmower.local cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_cur_freq"
+      command: "ssh -i /config/.ssh/id_rsa -o StrictHostKeyChecking=no openmower@openmower.local cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_cur_freq"
       unit_of_measurement: "MHz"
       device_class: frequency
       value_template: "{{ value | multiply(0.001) | round(1) }}"
@@ -188,14 +188,14 @@ command_line:
       
   - sensor:
       name: "OpenMower RPi CPU Temperature"
-      command: "ssh -i /config/.ssh/id_rsa openmower@openmower.local cat /sys/class/thermal/thermal_zone0/temp"
+      command: "ssh -i /config/.ssh/id_rsa -o StrictHostKeyChecking=no openmower@openmower.local cat /sys/class/thermal/thermal_zone0/temp"
       unit_of_measurement: "°C"
       value_template: "{{ value | multiply(0.001) | round(1) }}"
       scan_interval: 10
       
   - sensor:
       name: "OpenMower RPi WiFi Signal Strength"
-      command: "ssh -i /config/.ssh/id_rsa openmower@openmower.local /usr/sbin/iwconfig wlan0 | grep Signal | cut -d= -f3 | cut -d' ' -f1"
+      command: "ssh -i /config/.ssh/id_rsa -o StrictHostKeyChecking=no openmower@openmower.local /usr/sbin/iwconfig wlan0 | grep Signal | cut -d= -f3 | cut -d' ' -f1"
       unit_of_measurement: "dBm"
       device_class: signal_strength
       scan_interval: 10

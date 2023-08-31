@@ -1,7 +1,10 @@
-counter:
+input_number:
   duju_skaitliukas:
     name: "Dujų Skaitliukas"
+    min: 622202
+    max: 999999
     step: 1
+    mode: box
 
 template:    
   - sensor:
@@ -10,4 +13,4 @@ template:
       unit_of_measurement: "m³"
       state_class: "total_increasing"
       icon: "mdi:fire"
-      state: "{{ states('counter.duju_skaitliukas') | float * 0.01}}"
+      state: "{{ states('input_number.duju_skaitliukas') | float * 0.01}}"
