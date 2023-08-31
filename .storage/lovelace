@@ -81,7 +81,8 @@
         },
         {
           "path": "default_view",
-          "title": "Home",
+          "icon": "mdi:home",
+          "badges": [],
           "cards": [
             {
               "type": "history-graph",

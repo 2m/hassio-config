@@ -2,11 +2,6 @@
 # Configure a default setup of Home Assistant (frontend, api, etc)
 default_config:
 
-lovelace:
-  resources:
-  - url: /hacsfiles/tabbed-card/tabbed-card.js
-    type: module
-
 # Text to speech
 tts:
   - platform: google_translate
