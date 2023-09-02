@@ -7,8 +7,6 @@ esphome:
   name_add_mac_suffix: false
   friendly_name: ${friendly_name}
 api:
-  encryption:
-    key: Au7uLGPmYzsn/s7R8uTz2zLEbCszNtJZ90Q4cicdfIQ=
 logger:
 ota:
 
