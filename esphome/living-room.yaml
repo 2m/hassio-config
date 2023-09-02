@@ -22,6 +22,7 @@ i2c:
 
 sensor:
   - platform: mhz19
+    id: living_room_mhz19
     co2:
       name: "Living Room CO2"
     temperature:
@@ -41,6 +42,11 @@ sensor:
 switch:
   - platform: restart
     name: "Living Room Restart"
+  - platform: template
+    name: "Living Room CO2 Baseline Calibration"
+    assumed_state: true
+    turn_on_action:
+      - mhz19.calibrate_zero: living_room_mhz19
 
 logger:
 
