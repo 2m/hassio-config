@@ -1,0 +1,13 @@
+input_number:
+  gas_meter:
+    mode: box
+    unit_of_measurement: "m³"
+    icon: mdi:fire
+    step: 1
+    min: 0
+    max: 1000000
+    
+utility_meter:
+  gas:
+    source: input_number.gas_meter
+    cycle: monthly

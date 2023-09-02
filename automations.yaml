@@ -1,0 +1,171 @@
+- id: '1672385155271'
+  alias: Low circulation when no free cooling
+  description: ''
+  trigger:
+  - platform: template
+    value_template: '{{ states(''sensor.supply_temperature_difference'') | float >
+      -1 }}'
+    for:
+      hours: 0
+      minutes: 2
+      seconds: 0
+  condition: []
+  action:
+  - service: modbus.write_register
+    data:
+      address: 4
+      hub: komfovent
+      unit: 1
+      value: 2
+  mode: single
+- id: '1672385248136'
+  alias: Turn on high circulation when free cooling
+  description: ''
+  trigger:
+  - platform: template
+    value_template: '{{ states(''sensor.supply_temperature_difference'') | float <
+      -1 }}'
+    for:
+      hours: 0
+      minutes: 2
+      seconds: 0
+  condition: []
+  action:
+  - service: modbus.write_register
+    data:
+      address: 4
+      hub: komfovent
+      unit: 1
+      value: 3
+  mode: single
+- id: '1675322366821'
+  alias: Let's Encrypt Renewal
+  description: ''
+  trigger:
+  - platform: time
+    at: 01:25:00
+  condition: []
+  action:
+  - service: hassio.addon_restart
+    data:
+      addon: core_letsencrypt
+  mode: single
+- id: '1677594121190'
+  alias: Living Room Thermometer -> Radiator
+  description: ''
+  trigger:
+  - platform: state
+    entity_id:
+    - sensor.living_room_thermometer_temperature
+  condition: []
+  action:
+  - service: shell_command.set_radiator_temperature
+    data:
+      radiator: '{{ device_attr(''climate.living_room_radiator_1'', ''configuration_url'')
+        }}'
+      temp: '{{ states.sensor.living_room_thermometer_temperature.state }}'
+  - service: shell_command.set_radiator_temperature
+    data:
+      radiator: '{{ device_attr(''climate.living_room_radiator_2'', ''configuration_url'')
+        }}'
+      temp: '{{ states.sensor.living_room_thermometer_temperature.state }}'
+  mode: single
+- id: '1677594121191'
+  alias: Bedroom Thermometer -> Radiator
+  description: ''
+  trigger:
+  - platform: state
+    entity_id:
+    - sensor.bedroom_thermometer_temperature
+  condition: []
+  action:
+  - service: shell_command.set_radiator_temperature
+    data:
+      radiator: '{{ device_attr(''climate.bedroom_radiator'', ''configuration_url'')
+        }}'
+      temp: '{{ states.sensor.bedroom_thermometer_temperature.state }}'
+  mode: single
+- id: '1681884227930'
+  alias: Turn off Living Room Lights on Sunrise
+  description: ''
+  trigger:
+  - platform: sun
+    event: sunrise
+    offset: '1'
+  condition: []
+  action:
+  - type: turn_off
+    device_id: cdd882fbfbf8bd259be99b8e35a4180e
+    entity_id: light.backlight
+    domain: light
+  - type: turn_off
+    device_id: d012c04465a7ba5cd235359103e9bd8f
+    entity_id: light.yellow
+    domain: light
+  - type: turn_off
+    device_id: 5da32f6d013b7a61bceb2f7159611937
+    entity_id: 4b2df4626044b894f039352ae6cdb0ec
+    domain: light
+  mode: single
+- id: '1681884317399'
+  alias: Turn on Living Room Lights on Sunset
+  description: ''
+  trigger:
+  - platform: sun
+    event: sunset
+    offset: '-1'
+  condition: []
+  action:
+  - type: turn_on
+    device_id: cdd882fbfbf8bd259be99b8e35a4180e
+    entity_id: light.backlight
+    domain: light
+  - type: turn_on
+    device_id: d012c04465a7ba5cd235359103e9bd8f
+    entity_id: light.yellow
+    domain: light
+  - type: turn_on
+    device_id: 5da32f6d013b7a61bceb2f7159611937
+    entity_id: 4b2df4626044b894f039352ae6cdb0ec
+    domain: light
+  mode: single
+- id: '1689009295449'
+  alias: Kitchen Mode On
+  description: ''
+  trigger:
+  - platform: template
+    value_template: '{{ states(''sensor.air_fryer_power'') | float > 10 }}'
+  - platform: template
+    value_template: '{{ states(''sensor.stove_channel_1_power'') | float > 10 }}'
+  condition: []
+  action:
+  - service: scene.create
+    data:
+      scene_id: komfovent_mode_revert
+      snapshot_entities: switch.komfovent_mode_away,switch.komfovent_mode_normal,switch.komfovent_mode_intensive,switch.komfovent_mode_intensive
+  - service: shell_command.komfovent_kitchen_mode
+    data: {}
+  mode: single
+- id: '1689009402583'
+  alias: Kitchen Mode Off
+  description: ''
+  trigger:
+  - platform: template
+    value_template: '{{ states(''sensor.air_fryer_power'') | float < 10 }}'
+    for:
+      hours: 0
+      minutes: 5
+      seconds: 0
+  - platform: template
+    value_template: '{{ states(''sensor.stove_channel_1_power'') | float < 10 }}'
+    for:
+      hours: 0
+      minutes: 5
+      seconds: 0
+  condition: []
+  action:
+  - service: scene.turn_on
+    data: {}
+    target:
+      entity_id: scene.komfovent_mode_revert
+  mode: single

@@ -1,0 +1,52 @@
+template:
+  sensor:
+    - name: "Bedroom Radiator Valve Position"
+      unit_of_measurement: "%"
+      state: "{{ states('number.bedroom_radiator_valve_position') }}"
+    - name: "Living Room Radiator 1 Valve Position"
+      unit_of_measurement: "%"
+      state: "{{ states('number.living_room_radiator_1_valve_position') }}"
+    - name: "Living Room Radiator 2 Valve Position"
+      unit_of_measurement: "%"
+      state: "{{ states('number.living_room_radiator_2_valve_position') }}"
+      
+shell_command:
+  set_radiator_temperature: "curl {{ radiator }}/ext_t?temp={{ temp }}"
+      
+sensor:
+  - name: "Bedroom Radiator Stats" 
+    platform: rest
+    resource: http://192.168.86.25/stats
+    json_attributes:
+      - reboot_counter
+      - reconnect_counter
+      - steps_counter
+      - steps/hour
+    value_template: "{{ value_json.reboot_counter }}"
+    state_class: total_increasing
+    timeout: 60
+    scan_interval: 600
+  - name: "Living Room Radiator 1 Stats" 
+    platform: rest
+    resource: http://192.168.86.23/stats
+    json_attributes:
+      - reboot_counter
+      - reconnect_counter
+      - steps_counter
+      - steps/hour
+    value_template: "{{ value_json.reboot_counter }}"
+    state_class: total_increasing
+    timeout: 60
+    scan_interval: 600
+  - name: "Living Room Radiator 1 Stats" 
+    platform: rest
+    resource: http://192.168.86.30/stats
+    json_attributes:
+      - reboot_counter
+      - reconnect_counter
+      - steps_counter
+      - steps/hour
+    value_template: "{{ value_json.reboot_counter }}"
+    state_class: total_increasing
+    timeout: 60
+    scan_interval: 600

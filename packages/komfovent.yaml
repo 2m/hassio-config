@@ -1,0 +1,221 @@
+template:
+  - binary_sensor:
+    - name: "Komfovent Free Cooling"
+      state: "{{ states.sensor.komfovent_status_mask.state | int | bitwise_and(1024) }}"
+    - name: "Komfovent Rotor"
+      state: "{{ states.sensor.komfovent_status_mask.state | int | bitwise_and(8) }}"
+      
+  - sensor:
+      - name: "Supply Temperature Difference"
+        unit_of_measurement: "°C"
+        state: >
+          {% set supply = states('sensor.komfovent_supply_temperature_c') | float %}
+          {% set extract = states('sensor.komfovent_extract_temperature_c') | float %}
+
+          {{ supply - extract }}
+          
+switch:
+  - platform: template
+    switches:
+      komfovent_mode_away:
+        value_template: "{{ is_state('sensor.komfovent_mode', '1') }}"
+        turn_on:
+          service: modbus.write_register
+          data:
+            address: 4
+            hub: komfovent
+            unit: 1
+            value: 1
+        turn_off:
+      komfovent_mode_normal:
+        value_template: "{{ is_state('sensor.komfovent_mode', '2') }}"
+        turn_on:
+          service: modbus.write_register
+          data:
+            address: 4
+            hub: komfovent
+            unit: 1
+            value: 2
+        turn_off:
+      komfovent_mode_intensive:
+        value_template: "{{ is_state('sensor.komfovent_mode', '3') }}"
+        turn_on:
+          service: modbus.write_register
+          data:
+            address: 4
+            hub: komfovent
+            unit: 1
+            value: 3
+        turn_off:
+      komfovent_mode_boost:
+        value_template: "{{ is_state('sensor.komfovent_mode', '4') }}"
+        turn_on:
+          service: modbus.write_register
+          data:
+            address: 4
+            hub: komfovent
+            unit: 1
+            value: 4
+        turn_off:
+
+shell_command:
+  komfovent_kitchen_mode: >-
+      curl 'http://192.168.86.200:50080/' --data-raw '1=user&2=user' &&
+      curl 'http://192.168.86.200:50080/ajax.xml' --data-raw '282=20'
+
+modbus:
+  - name: komfovent
+    type: tcp
+    host: 192.168.86.200
+    port: 50502
+    switches:
+      - name: "Komfovent Auto Mode"
+        address: 3
+        command_on: 1
+        command_off: 0
+        verify:
+      - name: "Komfovent Power"
+        address: 0
+        command_on: 1
+        command_off: 0
+        verify:
+      - name: "Komfovent Eco Mode"
+        address: 2
+        command_on: 1
+        command_off: 0
+        verify:
+    sensors:
+      - name: "Komfovent Power"
+        address: 0
+        scan_interval: 10
+      - name: "Komfovent Eco"
+        address: 2
+        scan_interval: 10
+      - name: "Komfovent Mode"
+        address: 4
+        scan_interval: 10
+      - name: "Komfovent Auto"
+        address: 3
+        scan_interval: 10
+      - name: "Komfovent Schedule"
+        address: 5
+        scan_interval: 10
+      - name: "Komfovent Supply temperature 'C"
+        address: 901
+        scan_interval: 10
+        unit_of_measurement: °C
+        scale: 0.1
+        precision: 1
+      - name: "Komfovent Extract temperature 'C"
+        address: 902
+        scan_interval: 10
+        unit_of_measurement: °C
+        scale: 0.1
+        precision: 1
+      - name: "Komfovent Supply Flow, %"
+        address: 905
+        scan_interval: 10
+        count: 2
+        unit_of_measurement: '%'
+        precision: 1
+      - name: "Komfovent Extract Flow, %"
+        address: 907
+        scan_interval: 10
+        count: 2
+        unit_of_measurement: '%'
+        precision: 1
+      - name: "Komfovent Supply Fan Intensivity, %"
+        address: 909
+        scan_interval: 10
+        unit_of_measurement: '%'
+        scale: 0.1
+        precision: 1
+      - name: "Komfovent Extract Fan Intensivity, %"
+        address: 910
+        scan_interval: 10
+        unit_of_measurement: '%'
+        scale: 0.1
+        precision: 1
+      - name: "Komfovent Heat Exchanger, %"
+        address: 911
+        scan_interval: 10
+        unit_of_measurement: '%'
+        scale: 0.1
+        precision: 1
+      - name: "Komfovent Outdoor temperature 'C"
+        address: 903
+        scan_interval: 10
+        unit_of_measurement: °C
+        scale: 0.1
+        precision: 1
+      - name: "Komfovent Panel temperature"
+        address: 945
+        scan_interval: 10
+        scale: 0.1
+        precision: 1
+        unit_of_measurement: °C
+      - name: "Komfovent Filter Dirt, %"
+        address: 918
+        scan_interval: 10
+      - name: "Komfovent Filter Dirt, %"
+        address: 917
+        scan_interval: 10
+      - name: "Komfovent Filter Impurity, %"
+        address: 916
+        scan_interval: 10
+        unit_of_measurement: '%'
+      - name: "Komfovent Heating power, W"
+        address: 912
+        scan_interval: 10
+        unit_of_measurement: W
+      - name: "Komfovent Power consumption, W"
+        address: 920
+        scan_interval: 10
+        unit_of_measurement: W
+      - name: "Komfovent Power consumption Month, kWh"
+        address: 928
+        scan_interval: 10
+        unit_of_measurement: kWh
+        count: 2
+        precision: 0
+        scale: 0.001
+      - name: "Komfovent Heating Recovery Month, kWh"
+        address: 940
+        scan_interval: 10
+        unit_of_measurement: kWh
+        count: 2
+        precision: 0
+        scale: 0.001
+      - name: "Komfovent Heating Recovery Total, kWh"
+        address: 942
+        scan_interval: 10
+        unit_of_measurement: kWh
+        count: 2
+        precision: 0
+        scale: 0.001
+      - name: "Komfovent Heat Recovery, W"
+        address: 922
+        scan_interval: 10
+        unit_of_measurement: W
+      - name: "Komfovent Heat exchanger efficiency, %"
+        address: 923
+        scan_interval: 10
+        scale: 1
+        precision: 0
+        unit_of_measurement: '%'
+      - name: "Komfovent Energy saving, %"
+        address: 924
+        scan_interval: 10
+      - name: "Komfovent Specific power (SPI)"
+        address: 925
+        scan_interval: 10
+        scale: 0.001
+        precision: 2
+      - name: "Komfovent Status Mask"
+        address: 899
+        scan_interval: 10
+        
+sensor:
+  - platform: derivative
+    source: sensor.komfovent_supply_temperature_c
+    time_window: "00:30:00"

@@ -1,0 +1,29 @@
+{
+  "version": 1,
+  "minor_version": 1,
+  "key": "lovelace_resources",
+  "data": {
+    "items": [
+      {
+        "url": "/hacsfiles/button-card/button-card.js?hacstag=146194325411",
+        "type": "module",
+        "id": "93058dfa7bd64d9faa88db85d44e290f"
+      },
+      {
+        "id": "77702aa29d1d41c2b28cc394dafacf58",
+        "url": "/hacsfiles/simple-thermostat/simple-thermostat.js?hacstag=158654878250",
+        "type": "module"
+      },
+      {
+        "id": "15b5d7f52f484e9f861f865b86e4480a",
+        "url": "/hacsfiles/apexcharts-card/apexcharts-card.js?hacstag=331701152204",
+        "type": "module"
+      },
+      {
+        "id": "9bf84998724c4a08bbec382150bc8bbd",
+        "url": "/hacsfiles/scheduler-card/scheduler-card.js?hacstag=2862701573210",
+        "type": "module"
+      }
+    ]
+  }
+}

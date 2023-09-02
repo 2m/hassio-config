@@ -1,0 +1,918 @@
+{
+  "version": 1,
+  "minor_version": 1,
+  "key": "lovelace",
+  "data": {
+    "config": {
+      "views": [
+        {
+          "panel": false,
+          "icon": "mdi:home",
+          "badges": [],
+          "cards": [
+            {
+              "type": "vertical-stack",
+              "cards": [
+                {
+                  "type": "custom:apexcharts-card",
+                  "graph_span": "12h",
+                  "all_series_config": {
+                    "stroke_width": 2
+                  },
+                  "apex_config": {
+                    "tooltip": {
+                      "fixed": {
+                        "enabled": true
+                      },
+                      "x": {
+                        "show": false
+                      }
+                    },
+                    "legend": {
+                      "show": false
+                    }
+                  },
+                  "header": {
+                    "show": true,
+                    "show_states": true,
+                    "title": "Inside air quality"
+                  },
+                  "series": [
+                    {
+                      "entity": "sensor.living_room_co2",
+                      "name": "Living Room CO2",
+                      "yaxis_id": "co2",
+                      "color": "orange",
+                      "group_by": {
+                        "func": "avg",
+                        "duration": "2min"
+                      }
+                    },
+                    {
+                      "entity": "sensor.bedroom_co2",
+                      "name": "Bedroom CO2",
+                      "yaxis_id": "co2",
+                      "color": "orange",
+                      "group_by": {
+                        "func": "avg",
+                        "duration": "2min"
+                      }
+                    },
+                    {
+                      "entity": "sensor.living_room_humidity",
+                      "name": "Living Room Humidity",
+                      "yaxis_id": "humid",
+                      "color": "lightblue",
+                      "group_by": {
+                        "func": "avg",
+                        "duration": "2min"
+                      }
+                    },
+                    {
+                      "entity": "sensor.bedroom_humidity",
+                      "name": "Bedroom Humidity",
+                      "yaxis_id": "humid",
+                      "color": "lightblue",
+                      "group_by": {
+                        "func": "avg",
+                        "duration": "2min"
+                      }
+                    }
+                  ],
+                  "yaxis": [
+                    {
+                      "id": "co2",
+                      "min": "|-100|",
+                      "max": "|+100|"
+                    },
+                    {
+                      "id": "humid",
+                      "min": "|-5|",
+                      "max": "|+5|",
+                      "opposite": true
+                    }
+                  ]
+                },
+                {
+                  "type": "custom:apexcharts-card",
+                  "graph_span": "12h",
+                  "all_series_config": {
+                    "stroke_width": 2
+                  },
+                  "apex_config": {
+                    "tooltip": {
+                      "fixed": {
+                        "enabled": true
+                      },
+                      "x": {
+                        "show": false
+                      }
+                    },
+                    "legend": {
+                      "show": false
+                    }
+                  },
+                  "header": {
+                    "show": true,
+                    "show_states": true,
+                    "title": "Outside temperature"
+                  },
+                  "series": [
+                    {
+                      "entity": "sensor.ems_esp_boiler_boiler_outside_temperature",
+                      "name": "Boiler sensor",
+                      "yaxis_id": "temp",
+                      "color": "orange",
+                      "group_by": {
+                        "func": "avg",
+                        "duration": "2min"
+                      }
+                    },
+                    {
+                      "entity": "sensor.komfovent_outdoor_temperature_c",
+                      "name": "Recuperator sensor",
+                      "yaxis_id": "temp",
+                      "color": "lightblue",
+                      "group_by": {
+                        "func": "avg",
+                        "duration": "2min"
+                      }
+                    }
+                  ],
+                  "yaxis": [
+                    {
+                      "id": "temp",
+                      "min": "|-1|",
+                      "max": "|+1|"
+                    }
+                  ]
+                },
+                {
+                  "type": "horizontal-stack",
+                  "title": "Lights",
+                  "cards": [
+                    {
+                      "type": "light",
+                      "entity": "light.backlight"
+                    },
+                    {
+                      "type": "light",
+                      "entity": "light.yellow"
+                    },
+                    {
+                      "type": "light",
+                      "entity": "light.blue"
+                    },
+                    {
+                      "type": "light",
+                      "entity": "light.bedroom_light"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "icon": "mdi:fire-circle",
+          "subview": false,
+          "badges": [],
+          "cards": [
+            {
+              "type": "vertical-stack",
+              "title": "Bedroom",
+              "cards": [
+                {
+                  "type": "custom:simple-thermostat",
+                  "entity": "climate.bedroom_radiator",
+                  "sensors": [
+                    {
+                      "entity": "number.bedroom_radiator_valve_position",
+                      "name": "Heating"
+                    }
+                  ],
+                  "layout": {
+                    "step": "row"
+                  },
+                  "control": false,
+                  "header": false,
+                  "hide": {
+                    "state": true
+                  },
+                  "step_size": 1
+                },
+                {
+                  "type": "custom:apexcharts-card",
+                  "graph_span": "12h",
+                  "all_series_config": {
+                    "stroke_width": 2
+                  },
+                  "apex_config": {
+                    "stroke": {
+                      "dashArray": [
+                        0,
+                        5,
+                        0
+                      ]
+                    },
+                    "tooltip": {
+                      "fixed": {
+                        "enabled": true
+                      },
+                      "x": {
+                        "show": false
+                      }
+                    },
+                    "legend": {
+                      "show": false
+                    }
+                  },
+                  "series": [
+                    {
+                      "entity": "climate.bedroom_radiator",
+                      "attribute": "current_temperature",
+                      "name": "Temperature",
+                      "unit": "°C",
+                      "yaxis_id": "temp",
+                      "color": "orange",
+                      "group_by": {
+                        "func": "avg",
+                        "duration": "2min"
+                      }
+                    },
+                    {
+                      "entity": "climate.bedroom_radiator",
+                      "attribute": "temperature",
+                      "name": "Setpoint",
+                      "unit": "°C",
+                      "yaxis_id": "temp",
+                      "color": "lightblue",
+                      "group_by": {
+                        "func": "avg",
+                        "duration": "2min"
+                      }
+                    },
+                    {
+                      "entity": "number.bedroom_radiator_valve_position",
+                      "name": "Heating",
+                      "unit": "%",
+                      "yaxis_id": "heating",
+                      "color": "lightgray",
+                      "opacity": 0.5,
+                      "type": "area",
+                      "group_by": {
+                        "func": "avg",
+                        "duration": "2min"
+                      }
+                    }
+                  ],
+                  "yaxis": [
+                    {
+                      "id": "temp",
+                      "min": "|-1|",
+                      "max": "|+1|"
+                    },
+                    {
+                      "id": "heating",
+                      "min": 0,
+                      "max": 100,
+                      "opposite": true
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "vertical-stack",
+              "title": "Guest Room",
+              "cards": [
+                {
+                  "type": "custom:simple-thermostat",
+                  "entity": "climate.guest_room_radiator",
+                  "sensors": [
+                    {
+                      "entity": "climate.guest_room_radiator",
+                      "attribute": "pi_heating_demand",
+                      "name": "Heating",
+                      "unit": "%"
+                    }
+                  ],
+                  "layout": {
+                    "step": "row"
+                  },
+                  "control": false,
+                  "header": false,
+                  "hide": {
+                    "state": true
+                  },
+                  "step_size": 1
+                },
+                {
+                  "type": "custom:apexcharts-card",
+                  "graph_span": "12h",
+                  "all_series_config": {
+                    "stroke_width": 2
+                  },
+                  "apex_config": {
+                    "stroke": {
+                      "dashArray": [
+                        0,
+                        5,
+                        0
+                      ]
+                    },
+                    "tooltip": {
+                      "fixed": {
+                        "enabled": true
+                      },
+                      "x": {
+                        "show": false
+                      }
+                    },
+                    "legend": {
+                      "show": false
+                    }
+                  },
+                  "series": [
+                    {
+                      "entity": "climate.guest_room_radiator",
+                      "attribute": "current_temperature",
+                      "name": "Temperature",
+                      "unit": "°C",
+                      "yaxis_id": "temp",
+                      "color": "orange",
+                      "group_by": {
+                        "func": "avg",
+                        "duration": "2min"
+                      }
+                    },
+                    {
+                      "entity": "climate.guest_room_radiator",
+                      "attribute": "temperature",
+                      "name": "Setpoint",
+                      "unit": "°C",
+                      "yaxis_id": "temp",
+                      "color": "lightblue",
+                      "group_by": {
+                        "func": "avg",
+                        "duration": "2min"
+                      }
+                    },
+                    {
+                      "entity": "climate.guest_room_radiator",
+                      "attribute": "pi_heating_demand",
+                      "name": "Heating",
+                      "unit": "%",
+                      "yaxis_id": "heating",
+                      "color": "lightgray",
+                      "opacity": 0.5,
+                      "type": "area",
+                      "group_by": {
+                        "func": "avg",
+                        "duration": "2min"
+                      }
+                    }
+                  ],
+                  "yaxis": [
+                    {
+                      "id": "temp",
+                      "min": "|-1|",
+                      "max": "|+1|"
+                    },
+                    {
+                      "id": "heating",
+                      "min": 0,
+                      "max": 100,
+                      "opposite": true
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "vertical-stack",
+              "title": "Living Room 1",
+              "cards": [
+                {
+                  "type": "custom:simple-thermostat",
+                  "entity": "climate.living_room_radiator_1",
+                  "sensors": [
+                    {
+                      "entity": "number.living_room_radiator_1_valve_position",
+                      "name": "Heating"
+                    }
+                  ],
+                  "layout": {
+                    "step": "row"
+                  },
+                  "control": false,
+                  "header": false,
+                  "hide": {
+                    "state": true
+                  },
+                  "step_size": 1
+                },
+                {
+                  "type": "custom:apexcharts-card",
+                  "graph_span": "12h",
+                  "all_series_config": {
+                    "stroke_width": 2
+                  },
+                  "apex_config": {
+                    "stroke": {
+                      "dashArray": [
+                        0,
+                        5,
+                        0
+                      ]
+                    },
+                    "tooltip": {
+                      "fixed": {
+                        "enabled": true
+                      },
+                      "x": {
+                        "show": false
+                      }
+                    },
+                    "legend": {
+                      "show": false
+                    }
+                  },
+                  "series": [
+                    {
+                      "entity": "climate.living_room_radiator_1",
+                      "attribute": "current_temperature",
+                      "name": "Temperature",
+                      "unit": "°C",
+                      "yaxis_id": "temp",
+                      "color": "orange",
+                      "group_by": {
+                        "func": "avg",
+                        "duration": "2min"
+                      }
+                    },
+                    {
+                      "entity": "climate.living_room_radiator_1",
+                      "attribute": "temperature",
+                      "name": "Setpoint",
+                      "unit": "°C",
+                      "yaxis_id": "temp",
+                      "color": "lightblue",
+                      "group_by": {
+                        "func": "avg",
+                        "duration": "2min"
+                      }
+                    },
+                    {
+                      "entity": "number.living_room_radiator_1_valve_position",
+                      "name": "Heating 1",
+                      "unit": "%",
+                      "yaxis_id": "heating",
+                      "color": "lightgray",
+                      "opacity": 0.5,
+                      "type": "area",
+                      "group_by": {
+                        "func": "avg",
+                        "duration": "2min"
+                      }
+                    }
+                  ],
+                  "yaxis": [
+                    {
+                      "id": "temp",
+                      "min": "|-1|",
+                      "max": "|+1|"
+                    },
+                    {
+                      "id": "heating",
+                      "min": 0,
+                      "max": 100,
+                      "opposite": true
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "vertical-stack",
+              "title": "Living Room 2",
+              "cards": [
+                {
+                  "type": "custom:simple-thermostat",
+                  "entity": "climate.living_room_radiator_2",
+                  "sensors": [
+                    {
+                      "entity": "number.living_room_radiator_2_valve_position",
+                      "name": "Heating"
+                    }
+                  ],
+                  "layout": {
+                    "step": "row"
+                  },
+                  "control": false,
+                  "header": false,
+                  "hide": {
+                    "state": true
+                  },
+                  "step_size": 1
+                },
+                {
+                  "type": "custom:apexcharts-card",
+                  "graph_span": "12h",
+                  "all_series_config": {
+                    "stroke_width": 2
+                  },
+                  "apex_config": {
+                    "stroke": {
+                      "dashArray": [
+                        0,
+                        5,
+                        0
+                      ]
+                    },
+                    "tooltip": {
+                      "fixed": {
+                        "enabled": true
+                      },
+                      "x": {
+                        "show": false
+                      }
+                    },
+                    "legend": {
+                      "show": false
+                    }
+                  },
+                  "series": [
+                    {
+                      "entity": "climate.living_room_radiator_2",
+                      "attribute": "current_temperature",
+                      "name": "Temperature",
+                      "unit": "°C",
+                      "yaxis_id": "temp",
+                      "color": "orange",
+                      "group_by": {
+                        "func": "avg",
+                        "duration": "2min"
+                      }
+                    },
+                    {
+                      "entity": "climate.living_room_radiator_2",
+                      "attribute": "temperature",
+                      "name": "Setpoint",
+                      "unit": "°C",
+                      "yaxis_id": "temp",
+                      "color": "lightblue",
+                      "group_by": {
+                        "func": "avg",
+                        "duration": "2min"
+                      }
+                    },
+                    {
+                      "entity": "number.living_room_radiator_2_valve_position",
+                      "name": "Heating 1",
+                      "unit": "%",
+                      "yaxis_id": "heating",
+                      "color": "lightgray",
+                      "opacity": 0.5,
+                      "type": "area",
+                      "group_by": {
+                        "func": "avg",
+                        "duration": "2min"
+                      }
+                    }
+                  ],
+                  "yaxis": [
+                    {
+                      "id": "temp",
+                      "min": "|-1|",
+                      "max": "|+1|"
+                    },
+                    {
+                      "id": "heating",
+                      "min": 0,
+                      "max": 100,
+                      "opposite": true
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "vertical-stack",
+              "title": "Schedule",
+              "cards": [
+                {
+                  "type": "custom:scheduler-card",
+                  "title": "",
+                  "groups": [
+                    {
+                      "name": "Living Room Heating",
+                      "include": [
+                        "climate.living_room_radiator_1",
+                        "climate.living_room_radiator_2"
+                      ]
+                    },
+                    {
+                      "name": "Bed Room Heating",
+                      "include": [
+                        "climate.bedroom_radiator"
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "icon": "mdi:fan",
+          "badges": [],
+          "cards": [
+            {
+              "type": "vertical-stack",
+              "title": "Recuperation",
+              "cards": [
+                {
+                  "type": "horizontal-stack",
+                  "cards": [
+                    {
+                      "type": "custom:button-card",
+                      "entity": "sensor.komfovent_mode",
+                      "tap_action": {
+                        "action": "call-service",
+                        "service": "modbus.write_register",
+                        "service_data": {
+                          "address": 4,
+                          "hub": "komfovent",
+                          "unit": 1,
+                          "value": 1
+                        }
+                      },
+                      "hold_action": {
+                        "action": "none"
+                      },
+                      "name": "Away",
+                      "show_name": true,
+                      "icon": "mdi:home-export-outline",
+                      "state": [
+                        {
+                          "value": "1",
+                          "color": "#f7d958"
+                        },
+                        {
+                          "operator": "default",
+                          "color": "#4e729a"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "custom:button-card",
+                      "entity": "sensor.komfovent_mode",
+                      "tap_action": {
+                        "action": "call-service",
+                        "service": "modbus.write_register",
+                        "service_data": {
+                          "address": 4,
+                          "hub": "komfovent",
+                          "unit": 1,
+                          "value": 2
+                        }
+                      },
+                      "hold_action": {
+                        "action": "none"
+                      },
+                      "name": "Normal",
+                      "show_name": true,
+                      "icon": "mdi:home-account",
+                      "state": [
+                        {
+                          "value": "2",
+                          "color": "#f7d958"
+                        },
+                        {
+                          "operator": "default",
+                          "color": "#4e729a"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "custom:button-card",
+                      "entity": "sensor.komfovent_mode",
+                      "tap_action": {
+                        "action": "call-service",
+                        "service": "modbus.write_register",
+                        "service_data": {
+                          "address": 4,
+                          "hub": "komfovent",
+                          "unit": 1,
+                          "value": 4
+                        }
+                      },
+                      "hold_action": {
+                        "action": "none"
+                      },
+                      "name": "Boost",
+                      "show_name": true,
+                      "icon": "mdi:fan",
+                      "state": [
+                        {
+                          "value": "4",
+                          "color": "#f7d958"
+                        },
+                        {
+                          "operator": "default",
+                          "color": "#4e729a"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "horizontal-stack",
+                  "cards": [
+                    {
+                      "type": "sensor",
+                      "entity": "sensor.komfovent_outdoor_temperature_c",
+                      "name": "Outside",
+                      "icon": "mdi:weather-sunny",
+                      "tap_action": {
+                        "action": "none"
+                      },
+                      "hold_action": "more-info"
+                    },
+                    {
+                      "type": "sensor",
+                      "entity": "sensor.komfovent_supply_temperature_c",
+                      "name": "Supply",
+                      "icon": "mdi:home-import-outline",
+                      "tap_action": {
+                        "action": "none"
+                      },
+                      "hold_action": "more-info"
+                    },
+                    {
+                      "type": "sensor",
+                      "entity": "sensor.komfovent_panel_temperature",
+                      "name": "Inside",
+                      "icon": "mdi:home-outline",
+                      "tap_action": {
+                        "action": "none"
+                      },
+                      "hold_action": "more-info"
+                    },
+                    {
+                      "type": "sensor",
+                      "entity": "sensor.komfovent_extract_temperature_c",
+                      "name": "Extract",
+                      "icon": "mdi:home-export-outline",
+                      "tap_action": {
+                        "action": "none"
+                      },
+                      "hold_action": "more-info"
+                    }
+                  ]
+                },
+                {
+                  "type": "horizontal-stack",
+                  "cards": [
+                    {
+                      "type": "custom:button-card",
+                      "entity": "sensor.komfovent_mode",
+                      "tap_action": {
+                        "action": "call-service",
+                        "service": "shell_command.komfovent_kitchen_mode"
+                      },
+                      "hold_action": {
+                        "action": "none"
+                      },
+                      "name": "Kitchen",
+                      "show_name": true,
+                      "icon": "mdi:pot-steam-outline",
+                      "state": [
+                        {
+                          "value": "5",
+                          "color": "#f7d958"
+                        },
+                        {
+                          "operator": "default",
+                          "color": "#4e729a"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "custom:button-card",
+                      "entity": "binary_sensor.komfovent_free_cooling",
+                      "name": "Free Cooling",
+                      "icon": "mdi:thermometer-chevron-down",
+                      "tap_action": {
+                        "action": "none"
+                      }
+                    },
+                    {
+                      "type": "custom:button-card",
+                      "entity": "switch.komfovent_eco_mode",
+                      "name": "Eco",
+                      "icon": "mdi:snowflake-variant",
+                      "hold_action": "more-info"
+                    }
+                  ]
+                },
+                {
+                  "type": "horizontal-stack",
+                  "title": "Maintenance",
+                  "cards": [
+                    {
+                      "type": "sensor",
+                      "entity": "sensor.komfovent_supply_fan_intensivity",
+                      "name": "Supply",
+                      "icon": "mdi:fan",
+                      "tap_action": {
+                        "action": "none"
+                      },
+                      "hold_action": "more-info"
+                    },
+                    {
+                      "type": "sensor",
+                      "entity": "sensor.komfovent_extract_fan_intensivity",
+                      "name": "Extract",
+                      "icon": "mdi:fan",
+                      "tap_action": {
+                        "action": "none"
+                      },
+                      "hold_action": "more-info"
+                    },
+                    {
+                      "type": "sensor",
+                      "entity": "sensor.komfovent_filter_impurity",
+                      "name": "Filter",
+                      "icon": "mdi:find-replace",
+                      "tap_action": {
+                        "action": "none"
+                      },
+                      "hold_action": "more-info"
+                    },
+                    {
+                      "type": "button",
+                      "entity": "switch.komfovent_power",
+                      "name": "Power",
+                      "icon": "mdi:power",
+                      "hold_action": "more-info"
+                    }
+                  ]
+                },
+                {
+                  "type": "horizontal-stack",
+                  "title": "Power consumption",
+                  "cards": [
+                    {
+                      "type": "sensor",
+                      "entity": "sensor.komfovent_power_consumption_w",
+                      "name": "Power",
+                      "icon": "mdi:power-plug"
+                    },
+                    {
+                      "type": "sensor",
+                      "entity": "sensor.komfovent_heating_power_w",
+                      "name": "Heating",
+                      "icon": "mdi:radiator"
+                    },
+                    {
+                      "type": "sensor",
+                      "entity": "sensor.komfovent_heat_exchanger_efficiency",
+                      "name": "Efficiency",
+                      "icon": "mdi:chart-areaspline"
+                    }
+                  ]
+                },
+                {
+                  "type": "horizontal-stack",
+                  "title": "Free Cooling",
+                  "cards": [
+                    {
+                      "type": "history-graph",
+                      "entities": [
+                        {
+                          "entity": "binary_sensor.komfovent_free_cooling"
+                        },
+                        {
+                          "entity": "binary_sensor.komfovent_rotor"
+                        },
+                        {
+                          "entity": "sensor.komfovent_supply_fan_intensivity",
+                          "name": "Fan Speed"
+                        },
+                        {
+                          "entity": "sensor.komfovent_heat_exchanger"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
