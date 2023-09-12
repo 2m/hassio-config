@@ -1,6 +1,6 @@
 mqtt:
   sensor:
-    - state_topic: "robot_state/json"
+    - state_topic: "openmower/robot_state/json"
       name: "OpenMower Position Accuracy High Freq"
       unique_id: openmower_position_accuracy_high_freq
       device_class: distance
@@ -8,7 +8,7 @@ mqtt:
       value_template: "{{ value_json.pose.pos_accuracy | round(3) }}"
       unit_of_measurement: "m"
 
-    - state_topic: "robot_state/json"
+    - state_topic: "openmower/robot_state/json"
       name: "OpenMower Position Lat High Freq"
       unique_id: openmower_position_lat_high_freq
       icon: mdi:ruler
@@ -22,7 +22,7 @@ mqtt:
         {{ datum_lat + (value_json.pose.y * m) }}
       unit_of_measurement: "°"
 
-    - state_topic: "robot_state/json"
+    - state_topic: "openmower/robot_state/json"
       name: "OpenMower Position Lon High Freq"
       unique_id: openmower_position_lon_high_freq
       icon: mdi:ruler
@@ -35,8 +35,16 @@ mqtt:
         {% set datum_lon = 23.350276 %}
         {{ datum_lon + (value_json.pose.x * m) / cos(datum_lat * (pi / 180)) }}
       unit_of_measurement: "°"
+
+    - state_topic: "openmower/sensors/om_gps_accuracy/data"
+      name: "OpenMower GPS Accuracy High Freq"
+      unique_id: openmower_gps_accuracy_high_freq
+      device_class: distance
+      icon: mdi:ruler
+      value_template: "{{ value | round(3) }}"
+      unit_of_measurement: "m"
   
-    - state_topic: "sensors/om_mow_esc_temp/data"
+    - state_topic: "openmower/sensors/om_mow_esc_temp/data"
       name: "OpenMower Mower ESC Temperature High Freq"
       unique_id: openmower_mower_esc_temperature_high_freq
       device_class: temperature
@@ -44,15 +52,15 @@ mqtt:
       value_template: "{{ value | round(2) }}"
       unit_of_measurement: "°C"
   
-    - state_topic: "sensors/om_mow_motor_temp/data"
+    - state_topic: "openmower/sensors/om_mow_motor_temp/data"
       name: "OpenMower Mower Motor Temperature High Freq"
       unique_id: openmower_mower_motor_temperature_high_freq
       device_class: temperature
       icon: mdi:thermometer
       value_template: "{{ value | round(2) }}"
       unit_of_measurement: "°C"
-  
-    - state_topic: "sensors/om_left_esc_temp/data"
+
+    - state_topic: "openmower/sensors/om_left_esc_temp/data"
       name: "OpenMower Left ESC Temperature High Freq"
       unique_id: openmower_left_esc_temperature_high_freq
       device_class: temperature
@@ -60,7 +68,7 @@ mqtt:
       value_template: "{{ value | round(2) }}"
       unit_of_measurement: "°C"
   
-    - state_topic: "sensors/om_right_esc_temp/data"
+    - state_topic: "openmower/sensors/om_right_esc_temp/data"
       name: "OpenMower Right ESC Temperature High Freq"
       unique_id: openmower_right_esc_temperature_high_freq
       device_class: temperature
@@ -68,7 +76,7 @@ mqtt:
       value_template: "{{ value | round(2) }}"
       unit_of_measurement: "°C"
   
-    - state_topic: "sensors/om_charge_current/data"
+    - state_topic: "openmower/sensors/om_charge_current/data"
       name: "OpenMower Charge Current High Freq"
       unique_id: openmower_charge_current_hight_freq
       device_class: current
@@ -76,7 +84,7 @@ mqtt:
       value_template: "{{ value | round(2) }}"
       unit_of_measurement: "A"
   
-    - state_topic: "sensors/om_v_battery/data"
+    - state_topic: "openmower/sensors/om_v_battery/data"
       name: "OpenMower Battery Voltage High Freq"
       unique_id: openmower_battery_voltage_high_freq
       device_class: voltage
@@ -84,7 +92,7 @@ mqtt:
       value_template: "{{ value | round(2) }}"
       unit_of_measurement: "V"
 
-    - state_topic: "sensors/om_v_charge/data"
+    - state_topic: "openmower/sensors/om_v_charge/data"
       name: "OpenMower Charge Voltage High Freq"
       unique_id: openmower_charge_voltage_high_freq
       device_class: voltage
@@ -92,7 +100,7 @@ mqtt:
       value_template: "{{ value | round(2) }}"
       unit_of_measurement: "V"
   
-    - state_topic: "robot_state/json"
+    - state_topic: "openmower/robot_state/json"
       name: "OpenMower Battery Percentage High Freq"
       unique_id: openmower_battery_percentage_high_freq
       device_class: battery
@@ -100,25 +108,47 @@ mqtt:
       value_template: "{{ value_json.battery_percentage | round(2) | float * 100 }}"
       unit_of_measurement: "%"
   
-    - state_topic: "robot_state/json"
+    - state_topic: "openmower/robot_state/json"
       name: "OpenMower State"
       value_template: "{{ value_json.current_state }}"
 
   binary_sensor:
-    - state_topic: "robot_state/json"
+    - state_topic: "openmower/robot_state/json"
       name: "OpenMower Emergency"
       device_class: safety
       value_template: "{{ value_json.emergency }}"
       payload_on: "1"
       payload_off: "0"
   
-    - state_topic: "robot_state/json"
+    - state_topic: "openmower/robot_state/json"
       name: "OpenMower Charging"
       device_class: battery_charging
       value_template: "{{ value_json.is_charging }}"
       payload_on: "1"
       payload_off: "0"
       
+  lawn_mower:
+    - name: "OpenMower"
+      activity_state_topic: "openmower/robot_state/json"
+      activity_value_template: >-
+        {% set current_state = value_json.current_state %}
+        {% if current_state in ["MOWING", "DOCKING", "UNDOCKING"] %}
+          mowing
+        {% elif current_state in ["IDLE"] %}
+          {{ "docked" if bool(value_json.is_charging) else "paused" }}
+        {% else %}
+          none
+        {% endif %}
+      start_mowing_command_topic: "openmower/action"
+      start_mowing_command_template: "mower_logic:idle/start_mowing"
+      dock_command_topic: "openmower/action"
+      dock_command_template: "mower_logic:mowing/abort_mowing"
+      pause_command_topic: "openmower/action"
+      pause_command_template: "mower_logic:mowing/pause"
+      device:
+        configuration_url: "http://openmower.2m.lt:4006"
+        identifiers: openmower
+
 sensor:
   - platform: filter
     name: "OpenMower Position Accuracy"

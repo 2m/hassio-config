@@ -362,8 +362,12 @@
                       "name": "State"
                     },
                     {
-                      "entity": "sensor.openmower_position_accuracy",
-                      "name": "GPS Accuracy"
+                      "entity": "sensor.openmower_position_accuracy_high_freq",
+                      "name": "Robot GPS"
+                    },
+                    {
+                      "entity": "sensor.openmower_gps_accuracy_high_freq",
+                      "name": "Board GPS"
                     }
                   ]
                 },

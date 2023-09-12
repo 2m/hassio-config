@@ -24,51 +24,6 @@ http:
   use_x_forwarded_for: true
   trusted_proxies:
     - 172.30.33.0/24
-    
-mqtt:
-  switch:
-    - name: "Dujinis Katilas"
-      state_topic: "tehybug/switch1/stat/RESULT"  
-      value_template: "{{ value_json.POWER }}"
-      command_topic: "tehybug/switch1/cmnd/POWER"
-      payload_on: "ON"
-      payload_off: "OFF"
-      availability_topic: "tehybug/switch1/tele/LWT"
-      payload_available: "Online"
-      payload_not_available: "Offline"
-      qos: 1
-      retain: false
-      
-input_select:
-  sildymas:
-    name: Šildymas
-    options:
-      - Kietas kuras
-      - Dujos
-      - Gyvatukas vasarą
-    icon: mdi:fire-circle
-    
-template:
-  binary_sensor:
-    - name: "Dujinis Katilas"
-      state: "{{ expand('group.thermostats') | selectattr('attributes.hvac_action', '==', 'heating') | list | count  }}"
-  sensor:
-    - name: "Svetainės Radiatorius Setpoint"
-      unit_of_measurement: "°C"
-      state: "{{ states.climate.svetaines_radiatorius.attributes.temperature }}"
-    - name: "Virtuvės Radiatorius Setpoint"
-      unit_of_measurement: "°C"
-      state: "{{ states.climate.virtuves_radiatorius.attributes.temperature }}"
-    - name: "Mamos Radiatorius Setpoint"
-      unit_of_measurement: "°C"
-      state: "{{ states.climate.mamos_radiatorius.attributes.temperature }}"
-    - name: "Tetės Radiatorius Setpoint"
-      unit_of_measurement: "°C"
-      state: "{{ states.climate.tetes_radiatorius.attributes.temperature }}"
-
-shell_command:
-  set_radiator_temperature: "curl {{ radiator }}/ext_t?temp={{ temp }}"
-  shelly_trv_log: "bash -c \"curl {{ radiator }}/debug/log | tee /config/shelly-log.log\""
 
 group: !include groups.yaml
 automation: !include automations.yaml

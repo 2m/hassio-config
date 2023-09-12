@@ -9,6 +9,7 @@ prometheus:
       - climate
       - input_boolean
       - input_select
+      - input_number
       - number
       - lock
       - weather
