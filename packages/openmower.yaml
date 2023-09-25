@@ -229,3 +229,21 @@ command_line:
       unit_of_measurement: "dBm"
       device_class: signal_strength
       scan_interval: 10
+      
+shell_command:
+  openmower_start_in_area: "ssh -i /config/.ssh/id_rsa -o StrictHostKeyChecking=no openmower@openmower.local sudo podman exec -it openmower /openmower_entrypoint.sh rosservice call /mower_service/start_in_area \\'{area: {{ states.input_select.openmower_start_in_area_select.state }}}\\'"
+
+input_select:
+  openmower_start_in_area_select:
+    name: "Area to start OpenMower in"
+    options:
+      - 0
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      - 6
+      - 7
+      - 8
+      - 9

@@ -372,6 +372,35 @@
                   ]
                 },
                 {
+                  "type": "horizontal-stack",
+                  "cards": [
+                    {
+                      "type": "entities",
+                      "entities": [
+                        {
+                          "entity": "input_select.openmower_start_in_area_select",
+                          "name": "Area to start",
+                          "secondary_info": "none",
+                          "icon": "mdi:grass"
+                        }
+                      ],
+                      "show_header_toggle": true
+                    },
+                    {
+                      "show_name": true,
+                      "show_icon": false,
+                      "type": "button",
+                      "tap_action": {
+                        "action": "call-service",
+                        "service": "shell_command.openmower_start_in_area",
+                        "target": {}
+                      },
+                      "entity": "switch.schedule_1ef1c3",
+                      "name": "Start Mowing"
+                    }
+                  ]
+                },
+                {
                   "type": "glance",
                   "entities": [
                     {

@@ -1,0 +1,44 @@
+template:
+  binary_sensor:
+    - name: "Dujinis Katilas"
+      state: "{{ expand('group.thermostats') | selectattr('attributes.hvac_action', '==', 'heating') | list | count  }}"
+  sensor:
+    - name: "Svetainės Radiatorius Valve Position"
+      unit_of_measurement: "%"
+      state: "{{ states('number.svetaines_radiatorius_valve_position') }}"
+    - name: "Virtuvės Radiatorius Valve Position"
+      unit_of_measurement: "%"
+      state: "{{ states('number.virtuves_radiatorius_valve_position') }}"
+    - name: "Mamos Radiatorius Valve Position"
+      unit_of_measurement: "%"
+      state: "{{ states('number.mamos_radiatorius_valve_position') }}"
+    - name: "Tetės Radiatorius Valve Position"
+      unit_of_measurement: "%"
+      state: "{{ states('number.tetes_radiatorius_valve_position') }}"
+      
+mqtt:
+  switch:
+    - name: "Dujinis Katilas"
+      state_topic: "tehybug/switch1/stat/RESULT"  
+      value_template: "{{ value_json.POWER }}"
+      command_topic: "tehybug/switch1/cmnd/POWER"
+      payload_on: "ON"
+      payload_off: "OFF"
+      availability_topic: "tehybug/switch1/tele/LWT"
+      payload_available: "Online"
+      payload_not_available: "Offline"
+      qos: 1
+      retain: false
+      
+input_select:
+  sildymas:
+    name: Šildymas
+    options:
+      - Kietas kuras
+      - Dujos
+      - Gyvatukas vasarą
+    icon: mdi:fire-circle
+
+shell_command:
+  set_radiator_temperature: "curl {{ radiator }}/ext_t?temp={{ temp }}"
+  shelly_trv_log: "bash -c \"curl {{ radiator }}/debug/log | tee /config/shelly-log.log\""

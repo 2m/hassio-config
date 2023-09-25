@@ -47,6 +47,9 @@
   - platform: state
     entity_id:
     - sensor.mamos_termometras_temperature
+    not_to:
+    - unknown
+    - unavailable
   condition: []
   action:
   - service: shell_command.set_radiator_temperature
@@ -62,6 +65,9 @@
   - platform: state
     entity_id:
     - sensor.svetaines_termometras_temperature
+    not_to:
+    - unknown
+    - unavailable
   condition: []
   action:
   - service: shell_command.set_radiator_temperature
@@ -77,6 +83,9 @@
   - platform: state
     entity_id:
     - sensor.tetes_termometras_temperature
+    not_to:
+    - unknown
+    - unavailable
   condition: []
   action:
   - service: shell_command.set_radiator_temperature
@@ -92,6 +101,9 @@
   - platform: state
     entity_id:
     - sensor.virtuves_termometras_temperature
+    not_to:
+    - unknown
+    - unavailable
   condition: []
   action:
   - service: shell_command.set_radiator_temperature
