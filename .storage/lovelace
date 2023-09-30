@@ -368,6 +368,43 @@
                     {
                       "entity": "sensor.openmower_gps_accuracy_high_freq",
                       "name": "Board GPS"
+                    },
+                    {
+                      "entity": "sensor.openmower_gps_rtk_high_freq",
+                      "name": "Board RTK"
+                    }
+                  ]
+                },
+                {
+                  "type": "horizontal-stack",
+                  "cards": [
+                    {
+                      "type": "entities",
+                      "entities": [
+                        {
+                          "entity": "lawn_mower.openmower",
+                          "name": "Mower"
+                        }
+                      ],
+                      "show_header_toggle": false
+                    },
+                    {
+                      "show_name": true,
+                      "show_icon": true,
+                      "type": "button",
+                      "tap_action": {
+                        "action": "call-service",
+                        "service": "mqtt.publish",
+                        "target": {},
+                        "data": {
+                          "qos": "0",
+                          "topic": "openmower/call/mower_service/high_level_control",
+                          "payload": "{\"Command\": 4}"
+                        }
+                      },
+                      "icon": "mdi:skip-forward",
+                      "name": "Mow Next Area (S2)",
+                      "icon_height": "26px"
                     }
                   ]
                 },
@@ -388,15 +425,16 @@
                     },
                     {
                       "show_name": true,
-                      "show_icon": false,
+                      "show_icon": true,
                       "type": "button",
                       "tap_action": {
                         "action": "call-service",
                         "service": "shell_command.openmower_start_in_area",
                         "target": {}
                       },
-                      "entity": "switch.schedule_1ef1c3",
-                      "name": "Start Mowing"
+                      "name": "Mow Selected Area From The Beginning",
+                      "icon": "mdi:play-outline",
+                      "icon_height": "26px"
                     }
                   ]
                 },

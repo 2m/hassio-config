@@ -36,12 +36,86 @@ mqtt:
         {{ datum_lon + (value_json.pose.x * m) / cos(datum_lat * (pi / 180)) }}
       unit_of_measurement: "°"
 
-    - state_topic: "openmower/sensors/om_gps_accuracy/data"
+    - state_topic: "openmower/xbot_driver_gps/xb_pose"
       name: "OpenMower GPS Accuracy High Freq"
       unique_id: openmower_gps_accuracy_high_freq
       device_class: distance
       icon: mdi:ruler
-      value_template: "{{ value | round(3) }}"
+      value_template: "{{ value_json.PositionAccuracy | round(3) }}"
+      unit_of_measurement: "m"
+      
+    - state_topic: "openmower/xbot_driver_gps/xb_pose"
+      name: "OpenMower GPS Lat High Freq"
+      unique_id: openmower_gps_lat_high_freq
+      icon: mdi:ruler
+      value_template: >-
+        {# https://stackoverflow.com/a/50506609 #}
+        {# https://github.com/Turfjs/turf/issues/635#issuecomment-292011500 #}
+        {% set earth = 6371008.8 %}
+        {% set m = 1 / ((2 * pi / 360) * earth) %}
+        {% set datum_lat = 55.952423 %}
+        {% set datum_lon = 23.350276 %}
+        {{ datum_lat + (value_json.Pose.Pose.Position.Y * m) }}
+      unit_of_measurement: "°"
+
+    - state_topic: "openmower/xbot_driver_gps/xb_pose"
+      name: "OpenMower GPS Lon High Freq"
+      unique_id: openmower_gps_lon_high_freq
+      icon: mdi:ruler
+      value_template: >-
+        {# https://stackoverflow.com/a/50506609 #}
+        {# https://github.com/Turfjs/turf/issues/635#issuecomment-292011500 #}
+        {% set earth = 6371008.8 %}
+        {% set m = 1 / ((2 * pi / 360) * earth) %}
+        {% set datum_lat = 55.952423 %}
+        {% set datum_lon = 23.350276 %}
+        {{ datum_lon + (value_json.Pose.Pose.Position.X * m) / cos(datum_lat * (pi / 180)) }}
+      unit_of_measurement: "°"
+      
+    - state_topic: "openmower/xbot_driver_gps/xb_pose"
+      name: "OpenMower GPS Y High Freq"
+      unique_id: openmower_gps_y_high_freq
+      device_class: distance
+      icon: mdi:ruler
+      value_template: "{{ value_json.Pose.Pose.Position.Y | round(3) }}"
+      unit_of_measurement: "m"
+
+    - state_topic: "openmower/xbot_driver_gps/xb_pose"
+      name: "OpenMower GPS X High Freq"
+      unique_id: openmower_gps_x_high_freq
+      device_class: distance
+      icon: mdi:ruler
+      value_template: "{{ value_json.Pose.Pose.Position.X | round(3) }}"
+      unit_of_measurement: "m"
+      
+    - state_topic: "openmower/xbot_driver_gps/xb_pose"
+      name: "OpenMower GPS Z High Freq"
+      unique_id: openmower_gps_z_high_freq
+      device_class: distance
+      icon: mdi:ruler
+      value_template: "{{ value_json.Pose.Pose.Position.Z | round(3) }}"
+      unit_of_measurement: "m"
+      
+    - state_topic: "openmower/xbot_driver_gps/xb_pose"
+      name: "OpenMower GPS RTK High Freq"
+      unique_id: openmower_gps_rtk_high_freq
+      icon: mdi:crosshairs-gps
+      value_template: >-
+        {% set current_flags = value_json.Flags | int %}
+        {% if current_flags == 3 %}
+          fixed
+        {% elif current_flags == 5 %}
+          float
+        {% else %}
+          unknown
+        {% endif %}
+        
+    - state_topic: "openmower/xbot_driver_gps/xb_pose"
+      name: "OpenMower GPS Flags High Freq"
+      unique_id: openmower_gps_flags_high_freq
+      device_class: distance
+      icon: mdi:flag
+      value_template: "{{ value_json.Flags | int }}"
       unit_of_measurement: "m"
   
     - state_topic: "openmower/sensors/om_mow_esc_temp/data"
