@@ -57,6 +57,9 @@
   - platform: state
     entity_id:
     - sensor.living_room_thermometer_temperature
+    not_to:
+    - unknown
+    - unavailable
   condition: []
   action:
   - service: shell_command.set_radiator_temperature
@@ -76,14 +79,17 @@
   trigger:
   - platform: state
     entity_id:
-    - sensor.bedroom_thermometer_temperature
+    - sensor.e2m_bedroom_temperature_tempc
+    not_to:
+    - unknown
+    - unavailable
   condition: []
   action:
   - service: shell_command.set_radiator_temperature
     data:
       radiator: '{{ device_attr(''climate.bedroom_radiator'', ''configuration_url'')
         }}'
-      temp: '{{ states.sensor.bedroom_thermometer_temperature.state }}'
+      temp: '{{ states.sensor.e2m_bedroom_temperature_tempc.state }}'
   mode: single
 - id: '1681884227930'
   alias: Turn off Living Room Lights on Sunrise
@@ -168,4 +174,22 @@
     data: {}
     target:
       entity_id: scene.komfovent_mode_revert
+  mode: single
+- id: '1706566307612'
+  alias: Bedroom Thermometer (Shelly) -> Radiator
+  description: ''
+  trigger:
+  - platform: state
+    entity_id:
+    - sensor.bedroom_thermometer_temperature
+    not_to:
+    - unknown
+    - unavailable
+  condition: []
+  action:
+  - service: shell_command.set_radiator_temperature
+    data:
+      radiator: '{{ device_attr(''climate.bedroom_radiator'', ''configuration_url'')
+        }}'
+      temp: '{{ states.sensor.bedroom_thermometer_temperature.state }}'
   mode: single
