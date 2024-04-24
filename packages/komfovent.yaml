@@ -60,13 +60,13 @@ switch:
 
 shell_command:
   komfovent_kitchen_mode: >-
-      curl 'http://192.168.86.200:50080/' --data-raw '1=user&2=user' &&
-      curl 'http://192.168.86.200:50080/ajax.xml' --data-raw '282=20'
+      curl 'http://192.168.88.252:50080/' --data-raw '1=user&2=user' &&
+      curl 'http://192.168.88.252:50080/ajax.xml' --data-raw '282=20'
 
 modbus:
   - name: komfovent
     type: tcp
-    host: 192.168.86.200
+    host: 192.168.88.252
     port: 50502
     switches:
       - name: "Komfovent Auto Mode"
@@ -115,13 +115,11 @@ modbus:
       - name: "Komfovent Supply Flow, %"
         address: 905
         scan_interval: 10
-        count: 2
         unit_of_measurement: '%'
         precision: 1
       - name: "Komfovent Extract Flow, %"
         address: 907
         scan_interval: 10
-        count: 2
         unit_of_measurement: '%'
         precision: 1
       - name: "Komfovent Supply Fan Intensivity, %"
@@ -155,9 +153,6 @@ modbus:
         precision: 1
         unit_of_measurement: °C
       - name: "Komfovent Filter Dirt, %"
-        address: 918
-        scan_interval: 10
-      - name: "Komfovent Filter Dirt, %"
         address: 917
         scan_interval: 10
       - name: "Komfovent Filter Impurity, %"
@@ -176,21 +171,18 @@ modbus:
         address: 928
         scan_interval: 10
         unit_of_measurement: kWh
-        count: 2
         precision: 0
         scale: 0.001
       - name: "Komfovent Heating Recovery Month, kWh"
         address: 940
         scan_interval: 10
         unit_of_measurement: kWh
-        count: 2
         precision: 0
         scale: 0.001
       - name: "Komfovent Heating Recovery Total, kWh"
         address: 942
         scan_interval: 10
         unit_of_measurement: kWh
-        count: 2
         precision: 0
         scale: 0.001
       - name: "Komfovent Heat Recovery, W"
