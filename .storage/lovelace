@@ -168,6 +168,31 @@
                       "entity": "light.bedroom_light"
                     }
                   ]
+                },
+                {
+                  "type": "entities",
+                  "entities": [
+                    {
+                      "entity": "sensor.bedroom_radiator_battery"
+                    },
+                    {
+                      "entity": "sensor.living_room_radiator_1_battery"
+                    },
+                    {
+                      "entity": "sensor.living_room_radiator_2_battery"
+                    },
+                    {
+                      "entity": "sensor.living_room_thermometer_battery"
+                    },
+                    {
+                      "entity": "sensor.guest_room_radiator_battery"
+                    },
+                    {
+                      "entity": "sensor.e2m_bedroom_temperature_last_seen"
+                    }
+                  ],
+                  "title": "Batteries",
+                  "state_color": true
                 }
               ]
             }

@@ -5,7 +5,7 @@
   "data": {
     "items": [
       {
-        "url": "/hacsfiles/button-card/button-card.js?hacstag=146194325411",
+        "url": "/hacsfiles/button-card/button-card.js?hacstag=146194325412",
         "type": "module",
         "id": "93058dfa7bd64d9faa88db85d44e290f"
       },
@@ -21,7 +21,7 @@
       },
       {
         "id": "9bf84998724c4a08bbec382150bc8bbd",
-        "url": "/hacsfiles/scheduler-card/scheduler-card.js?hacstag=2862701573210",
+        "url": "/hacsfiles/scheduler-card/scheduler-card.js?hacstag=2862701573213",
         "type": "module"
       }
     ]
