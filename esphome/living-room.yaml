@@ -29,7 +29,7 @@ sensor:
       name: "Living Room Temperature"
     update_interval: 60s
     automatic_baseline_calibration: false
-  - platform: bme280
+  - platform: bme280_i2c
     temperature:
       name: "Living Room Temperature 2"
     pressure:
