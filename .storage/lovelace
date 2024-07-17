@@ -25,7 +25,7 @@
                   "disable_eco": true,
                   "disable_heat": true,
                   "disable_off": true,
-                  "set_current_as_main": false
+                  "set_current_as_main": true
                 },
                 {
                   "type": "custom:better-thermostat-ui-card",
@@ -36,7 +36,7 @@
                   "disable_eco": true,
                   "disable_heat": true,
                   "disable_off": true,
-                  "set_current_as_main": false
+                  "set_current_as_main": true
                 },
                 {
                   "type": "custom:better-thermostat-ui-card",
@@ -47,7 +47,7 @@
                   "disable_eco": true,
                   "disable_heat": true,
                   "disable_off": true,
-                  "set_current_as_main": false
+                  "set_current_as_main": true
                 },
                 {
                   "type": "custom:better-thermostat-ui-card",
@@ -58,7 +58,7 @@
                   "disable_eco": true,
                   "disable_heat": true,
                   "disable_off": true,
-                  "set_current_as_main": false
+                  "set_current_as_main": true
                 },
                 {
                   "type": "custom:better-thermostat-ui-card",
@@ -67,7 +67,9 @@
                   "disable_eco": true,
                   "disable_heat": true,
                   "disable_off": true,
-                  "set_current_as_main": false
+                  "set_current_as_main": true,
+                  "disable_window": true,
+                  "disable_summer": true
                 },
                 {
                   "type": "tile",
@@ -84,30 +86,6 @@
           "icon": "mdi:home",
           "badges": [],
           "cards": [
-            {
-              "type": "history-graph",
-              "entities": [
-                {
-                  "entity": "sensor.mamos_termometras_temperature",
-                  "name": "Mamos termometras"
-                },
-                {
-                  "entity": "sensor.svetaines_termometras_temperature",
-                  "name": "Svetainės termometras"
-                },
-                {
-                  "entity": "sensor.tetes_termometras_temperature",
-                  "name": "Tetės termometras"
-                },
-                {
-                  "entity": "sensor.virtuves_termometras_temperature",
-                  "name": "Virtuvės termometras"
-                }
-              ],
-              "hours_to_show": 24,
-              "refresh_interval": 0,
-              "title": "Temperatūra"
-            },
             {
               "show_name": true,
               "show_icon": true,
@@ -133,6 +111,30 @@
               ],
               "state_color": false,
               "columns": 3
+            },
+            {
+              "type": "history-graph",
+              "entities": [
+                {
+                  "entity": "sensor.mamos_termometras_temperature",
+                  "name": "Mamos termometras"
+                },
+                {
+                  "entity": "sensor.svetaines_termometras_temperature",
+                  "name": "Svetainės termometras"
+                },
+                {
+                  "entity": "sensor.tetes_termometras_temperature",
+                  "name": "Tetės termometras"
+                },
+                {
+                  "entity": "sensor.virtuves_termometras_temperature",
+                  "name": "Virtuvės termometras"
+                }
+              ],
+              "hours_to_show": 24,
+              "refresh_interval": 0,
+              "title": "Temperatūra"
             },
             {
               "show_name": true,
@@ -439,79 +441,110 @@
                   ]
                 },
                 {
-                  "type": "glance",
-                  "entities": [
-                    {
-                      "entity": "sensor.openmower_battery_percentage",
-                      "name": "Battery"
-                    },
-                    {
-                      "entity": "sensor.openmower_battery_voltage",
-                      "name": "Battery"
-                    },
-                    {
-                      "entity": "binary_sensor.openmower_charging",
-                      "name": "Battery"
-                    },
-                    {
-                      "entity": "sensor.openmower_charge_current",
-                      "name": "Currrent"
-                    },
-                    {
-                      "entity": "sensor.openmower_charge_voltage",
-                      "name": "Voltage"
-                    }
-                  ]
-                },
-                {
-                  "type": "glance",
-                  "entities": [
-                    {
-                      "entity": "sensor.openmower_left_esc_temperature",
-                      "name": "Left ESC"
-                    },
-                    {
-                      "entity": "sensor.openmower_right_esc_temperature",
-                      "name": "Right ESC"
-                    },
-                    {
-                      "entity": "sensor.openmower_mower_esc_temperature",
-                      "name": "Mower ESC"
-                    },
-                    {
-                      "entity": "sensor.openmower_mower_motor_temperature",
-                      "name": "Mower Motor"
-                    }
-                  ]
-                },
-                {
-                  "type": "horizontal-stack",
+                  "type": "vertical-stack",
+                  "title": "OpenMower Stats",
                   "cards": [
                     {
                       "type": "glance",
                       "entities": [
                         {
-                          "entity": "sensor.openmower_rpi_cpu_frequency",
-                          "name": "RPi CPU"
+                          "entity": "sensor.openmower_battery_percentage",
+                          "name": "Battery"
                         },
                         {
-                          "entity": "sensor.openmower_rpi_cpu_temperature",
-                          "name": "RPi CPU"
+                          "entity": "sensor.openmower_battery_voltage",
+                          "name": "Battery"
+                        },
+                        {
+                          "entity": "binary_sensor.openmower_charging",
+                          "name": "Battery"
+                        },
+                        {
+                          "entity": "sensor.openmower_charge_current",
+                          "name": "Currrent"
+                        },
+                        {
+                          "entity": "sensor.openmower_charge_voltage",
+                          "name": "Voltage"
                         }
                       ]
                     },
                     {
-                      "type": "gauge",
-                      "entity": "sensor.openmower_rpi_wifi_signal_strength",
-                      "name": "RPi WiFi",
-                      "needle": true,
-                      "severity": {
-                        "green": -70,
-                        "yellow": -75,
-                        "red": -80
-                      },
-                      "min": -80,
-                      "max": -30
+                      "type": "glance",
+                      "entities": [
+                        {
+                          "entity": "sensor.openmower_left_esc_temperature",
+                          "name": "Left ESC"
+                        },
+                        {
+                          "entity": "sensor.openmower_right_esc_temperature",
+                          "name": "Right ESC"
+                        },
+                        {
+                          "entity": "sensor.openmower_mower_esc_temperature",
+                          "name": "Mower ESC"
+                        },
+                        {
+                          "entity": "sensor.openmower_mower_motor_temperature",
+                          "name": "Mower Motor"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "horizontal-stack",
+                  "title": "Raspberry Pi Stats",
+                  "cards": [
+                    {
+                      "type": "vertical-stack",
+                      "cards": [
+                        {
+                          "show_name": false,
+                          "show_icon": true,
+                          "show_state": true,
+                          "type": "glance",
+                          "entities": [
+                            {
+                              "entity": "sensor.openmower_cpu_clock_speed",
+                              "name": "RPi CPU"
+                            },
+                            {
+                              "entity": "sensor.openmower_cpu_temperature",
+                              "name": "RPi CPU"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "custom:button-card",
+                          "entity": "sensor.openmower_wifi_strength",
+                          "show_last_changed": true,
+                          "show_icon": false,
+                          "show_name": false,
+                          "tap_action": {
+                            "action": "navigate",
+                            "navigation_path": "/config/devices/device/743a5b1755d964e396da773cec385d3e"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "type": "vertical-stack",
+                      "cards": [
+                        {
+                          "type": "gauge",
+                          "entity": "sensor.openmower_wifi_signal",
+                          "name": "RPi WiFi",
+                          "needle": true,
+                          "severity": {
+                            "green": -70,
+                            "yellow": -80,
+                            "red": -90
+                          },
+                          "max": 20,
+                          "min": -90
+                        }
+                      ]
                     }
                   ]
                 }
@@ -535,8 +568,8 @@
                   "cards": [
                     {
                       "type": "gauge",
-                      "entity": "sensor.temperatura_i_katila",
-                      "name": "Į katilą",
+                      "entity": "input_number.fourway_valve_control_temp",
+                      "name": "Temperatūra į katilą",
                       "needle": true,
                       "severity": {
                         "green": 40,
@@ -546,37 +579,131 @@
                     },
                     {
                       "type": "gauge",
-                      "entity": "sensor.temperatura_is_radiatoriu",
-                      "needle": true,
-                      "name": "Iš radiatorių",
-                      "severity": {
-                        "green": 40,
-                        "yellow": 70,
-                        "red": 95
+                      "entity": "number.fourway_valve_position",
+                      "unit": "%",
+                      "name": "Vožtuvo atidarymas"
+                    }
+                  ]
+                },
+                {
+                  "square": false,
+                  "type": "grid",
+                  "title": "Temperatūros",
+                  "cards": [
+                    {
+                      "type": "custom:button-card",
+                      "entity": "sensor.temperature_2",
+                      "name": "Į radiatorius",
+                      "show_icon": false,
+                      "show_state": true,
+                      "show_units": false,
+                      "show_last_changed": true,
+                      "styles": {
+                        "state": [
+                          {
+                            "font-size": "80px"
+                          },
+                          {
+                            "font-weight": "bold"
+                          }
+                        ]
                       }
+                    },
+                    {
+                      "type": "custom:button-card",
+                      "entity": "sensor.temperature_1",
+                      "name": "Iš katilo",
+                      "show_icon": false,
+                      "show_state": true,
+                      "show_units": false,
+                      "show_last_changed": true,
+                      "styles": {
+                        "state": [
+                          {
+                            "font-size": "80px"
+                          },
+                          {
+                            "font-weight": "bold"
+                          }
+                        ]
+                      }
+                    },
+                    {
+                      "type": "custom:button-card",
+                      "entity": "sensor.temperature_3",
+                      "name": "Iš radiatorių",
+                      "show_icon": false,
+                      "show_state": true,
+                      "show_units": false,
+                      "show_last_changed": true,
+                      "styles": {
+                        "state": [
+                          {
+                            "font-size": "80px"
+                          },
+                          {
+                            "font-weight": "bold"
+                          }
+                        ]
+                      }
+                    },
+                    {
+                      "type": "custom:button-card",
+                      "entity": "sensor.temperature_4",
+                      "name": "Į katilą",
+                      "show_icon": false,
+                      "show_state": true,
+                      "show_units": false,
+                      "show_last_changed": true,
+                      "styles": {
+                        "state": [
+                          {
+                            "font-size": "80px"
+                          },
+                          {
+                            "font-weight": "bold"
+                          }
+                        ]
+                      }
+                    }
+                  ],
+                  "columns": 2
+                },
+                {
+                  "type": "horizontal-stack",
+                  "title": "Valdymo temperatūros",
+                  "cards": [
+                    {
+                      "type": "entity",
+                      "entity": "input_number.fourway_valve_bottom_temp",
+                      "name": "Apatinė",
+                      "unit": "°C"
+                    },
+                    {
+                      "type": "entity",
+                      "entity": "input_number.fourway_valve_top_temp",
+                      "name": "Viršutinė",
+                      "unit": "°C"
                     }
                   ]
                 },
                 {
                   "type": "horizontal-stack",
+                  "title": "Valdymo kalibravimas",
                   "cards": [
                     {
                       "type": "entity",
-                      "entity": "number.keturegio_valdymo_apatine_temperatura",
-                      "name": "Valdymo Apatinė",
-                      "unit": "°C"
+                      "entity": "input_number.fourway_valve_fully_closed_at",
+                      "name": "Uždaryta ties",
+                      "icon": "mdi:arrow-top-right"
                     },
                     {
                       "type": "entity",
-                      "entity": "number.keturegio_valdymo_vidurine_temperatura",
-                      "name": "Valdymo Vidurinė",
-                      "unit": "°C"
+                      "entity": "input_number.fourway_valve_fully_open_at",
+                      "name": "Atidaryta ties",
+                      "icon": "mdi:arrow-top-left"
                     }
                   ]
-                },
-                {
-                  "type": "entity",
-                  "entity": "sensor.keturegio_atidarymas"
                 }
               ]
             }

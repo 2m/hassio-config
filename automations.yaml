@@ -155,3 +155,40 @@
     target:
       entity_id: input_number.duju_skaitliukas
   mode: single
+- id: '1699015891713'
+  alias: Valdymo Temperatūra į Keturėgį Vožtuvą
+  description: ''
+  trigger:
+  - platform: state
+    entity_id:
+    - sensor.temperature_4
+    not_to:
+    - unknown
+    - unavailable
+  condition: []
+  action:
+  - service: input_number.set_value
+    data:
+      value: '{{ states.sensor.temperature_4.state }}'
+    target:
+      entity_id: input_number.fourway_valve_control_temp
+  mode: single
+- id: '1716291068092'
+  alias: OpenMower Emergency -> Mobile Notification
+  description: ''
+  trigger:
+  - platform: state
+    entity_id:
+    - binary_sensor.openmower_emergency
+    from: 'off'
+    to: 'on'
+  condition: []
+  action:
+  - service: notify.openmower_notification_devices
+    data:
+      title: OpenMower Emergency
+      message: OpenMower got into the emergency mode
+      data:
+        clickAction: lovelace/4
+        color: red
+  mode: single

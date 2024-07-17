@@ -30,6 +30,14 @@ automation: !include automations.yaml
 script: !include scripts.yaml
 scene: !include scenes.yaml
 
+notify:
+  - name: openmower_notification_devices
+    platform: group
+    services:
+      - service: mobile_app_pixel_8_pro
+      - service: mobile_app_pixel_tablet
+      - service: mobile_app_pixel_5
+
 logger:
   default: warning
   logs:
