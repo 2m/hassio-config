@@ -1,0 +1,44 @@
+esphome:
+  name: basement-temperature
+  platform: ESP32
+  board: nodemcu-32s
+
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_password
+
+web_server:
+  port: 80
+
+one_wire:
+  - platform: gpio
+    pin: GPIO23
+
+sensor:
+  - platform: dallas_temp
+    address: 0x853C01D0753EEC28
+    name: Temperature 1
+    id: temperature_1
+    update_interval: 30s
+  - platform: dallas_temp
+    address: 0xBA3C01D07500BD28
+    name: Temperature 2
+    id: temperature_2
+    update_interval: 30s
+  - platform: dallas_temp
+    address: 0x913C01D07573F128
+    name: Temperature 3
+    id: temperature_3
+    update_interval: 30s
+  - platform: dallas_temp
+    address: 0x3B3C01D075164328
+    name: Temperature 4
+    id: temperature_4
+    update_interval: 30s
+
+logger:
+
+api:
+
+ota:
+  platform: esphome

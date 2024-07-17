@@ -1,0 +1,66 @@
+substitutions:
+  devicename: "gas-meter"
+  friendly_name: "Gas meter"
+
+esphome:
+  name: $devicename
+  comment: $friendly_name
+  platform: ESP32
+  board: featheresp32
+  build_path: .builds/$devicename
+
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_password
+
+logger:
+
+api:
+
+web_server:
+  port: 80
+
+ota:
+
+sensor:
+  - platform: homeassistant
+    entity_id: sensor.duju_skaitliukas
+    id: gas_meter
+    name: gas_meter
+
+binary_sensor:
+  - platform: gpio
+    id: pulse_detected
+    name: pulse_detected
+    pin: GPIO27
+    filters:
+      - invert:
+      - delayed_off: 1000ms
+
+spi:
+  clk_pin: GPIO18
+  mosi_pin: GPIO19
+
+font:
+  - id: s
+    file: "fonts/BebasNeue-Regular.ttf"
+    size: 19
+  - id: m
+    file: "fonts/BebasNeue-Regular.ttf"
+    size: 28
+  - id: l
+    file: "fonts/BebasNeue-Regular.ttf"
+    size: 58
+
+display:
+  - id: my_display
+    platform: st7789v
+    model: TTGO TDisplay 135x240
+    backlight_pin: GPIO4
+    cs_pin: GPIO5
+    dc_pin: GPIO16
+    reset_pin: GPIO23
+    rotation: 270°
+    update_interval: 5s
+    lambda: |-
+      it.printf(it.get_width(), 0, id(l), TextAlign::TOP_RIGHT, "%08.2f", id(gas_meter).state);
