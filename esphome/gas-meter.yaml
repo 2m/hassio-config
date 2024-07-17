@@ -21,6 +21,7 @@ web_server:
   port: 80
 
 ota:
+  platform: esphome
 
 sensor:
   - platform: homeassistant
@@ -28,14 +29,26 @@ sensor:
     id: gas_meter
     name: gas_meter
 
-binary_sensor:
-  - platform: gpio
-    id: pulse_detected
-    name: pulse_detected
-    pin: GPIO27
-    filters:
-      - invert:
-      - delayed_off: 1000ms
+  - platform: qmc5883l
+    address: 0x0D
+    field_strength_x:
+      name: "Gas Meter Field Strength X"
+    field_strength_y:
+      name: "Gas Meter Field Strength Y"
+    field_strength_z:
+      name: "Gas Meter Field Strength Z"
+    temperature:
+      name: "Gas Meter Temperature"
+      filters:
+        - offset: 34.0
+    range: 200uT
+    oversampling: 512x
+    update_interval: 1s
+
+i2c:
+  sda: GPIO21
+  scl: GPIO22
+  scan: true
 
 spi:
   clk_pin: GPIO18

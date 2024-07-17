@@ -14,3 +14,9 @@ template:
       state_class: "total_increasing"
       icon: "mdi:fire"
       state: "{{ states('input_number.duju_skaitliukas') | float * 0.01}}"
+      
+binary_sensor:
+  - platform: threshold
+    entity_id: sensor.gas_meter_field_strength_z
+    lower: -70
+    name: Gas Meter Pulse

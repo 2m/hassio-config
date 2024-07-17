@@ -145,7 +145,7 @@
   trigger:
   - platform: state
     entity_id:
-    - binary_sensor.pulse_detected
+    - binary_sensor.gas_meter_pulse
     from: 'off'
     to: 'on'
   condition: []
