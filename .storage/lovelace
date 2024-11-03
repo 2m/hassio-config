@@ -19,13 +19,24 @@
                 {
                   "type": "custom:better-thermostat-ui-card",
                   "entity": "climate.mamos_radiatorius",
-                  "name": "Mamos Termostatas",
                   "disable_window": true,
                   "disable_summer": true,
                   "disable_eco": true,
                   "disable_heat": true,
                   "disable_off": true,
-                  "set_current_as_main": true
+                  "set_current_as_main": true,
+                  "name": "Mamos Radiatorius"
+                },
+                {
+                  "type": "custom:better-thermostat-ui-card",
+                  "entity": "climate.mamos_radiatorius_2",
+                  "disable_window": true,
+                  "disable_summer": true,
+                  "disable_eco": true,
+                  "disable_heat": true,
+                  "disable_off": true,
+                  "set_current_as_main": true,
+                  "name": "Mamos Radiatorius 2"
                 },
                 {
                   "type": "custom:better-thermostat-ui-card",
@@ -53,6 +64,17 @@
                   "type": "custom:better-thermostat-ui-card",
                   "entity": "climate.virtuves_radiatorius",
                   "name": "Virtuvės Termostatas",
+                  "disable_window": true,
+                  "disable_summer": true,
+                  "disable_eco": true,
+                  "disable_heat": true,
+                  "disable_off": true,
+                  "set_current_as_main": true
+                },
+                {
+                  "type": "custom:better-thermostat-ui-card",
+                  "entity": "climate.virtuves_radiatorius_2",
+                  "name": "Virtuvės Termostatas 2",
                   "disable_window": true,
                   "disable_summer": true,
                   "disable_eco": true,
@@ -147,6 +169,10 @@
                   "name": "Mamos"
                 },
                 {
+                  "entity": "number.mamos_radiatorius_2_valve_position",
+                  "name": "Mamos 2"
+                },
+                {
                   "entity": "number.svetaines_radiatorius_valve_position",
                   "name": "Svetainės"
                 },
@@ -157,9 +183,14 @@
                 {
                   "entity": "number.virtuves_radiatorius_valve_position",
                   "name": "Virtuvės"
+                },
+                {
+                  "entity": "number.virtuves_radiatorius_2_valve_position",
+                  "name": "Virtuvės 2"
                 }
               ],
-              "title": "Radiatoriai"
+              "title": "Radiatoriai",
+              "columns": 3
             },
             {
               "type": "entities",
@@ -208,6 +239,10 @@
                   "name": "Mamos Radiatorius"
                 },
                 {
+                  "entity": "sensor.mamos_radiatorius_2_battery",
+                  "name": "Mamos Radiatorius 2"
+                },
+                {
                   "entity": "sensor.mamos_termometras_battery",
                   "name": "Mamos Termometras"
                 },
@@ -230,6 +265,10 @@
                 {
                   "entity": "sensor.virtuves_radiatorius_battery",
                   "name": "Virtuvės Radiatorius"
+                },
+                {
+                  "entity": "sensor.virtuves_radiatorius_2_battery",
+                  "name": "Virtuvės Radiatorius 2"
                 },
                 {
                   "entity": "sensor.virtuves_termometras_battery",
@@ -579,7 +618,7 @@
                     },
                     {
                       "type": "gauge",
-                      "entity": "number.fourway_valve_position",
+                      "entity": "sensor.fourway_valve_position",
                       "unit": "%",
                       "name": "Vožtuvo atidarymas"
                     }
@@ -744,6 +783,17 @@
                   }
                 }
               ]
+            },
+            {
+              "show_name": true,
+              "show_icon": true,
+              "type": "button",
+              "tap_action": {
+                "action": "toggle"
+              },
+              "entity": "switch.shellyplug_s_9dd989",
+              "name": "Dujino Pečiaus Įjungimas",
+              "icon": "mdi:gas-burner"
             }
           ]
         }

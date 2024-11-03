@@ -28,3 +28,22 @@ input_number:
     min: -100
     max: 100
     mode: box
+    
+template:
+  sensor:
+    - name: "Fourway Valve Position"
+      unit_of_measurement: "%"
+      state: >-
+        {% set control_temp = states('input_number.fourway_valve_control_temp') | float %}
+        {% set bottom_temp = states('input_number.fourway_valve_bottom_temp') | float %}
+        {% set top_temp = states('input_number.fourway_valve_top_temp') | float %}
+        {% set valve_position = (control_temp - bottom_temp) / (top_temp - bottom_temp) * 100 %}
+        {{ [0, [valve_position, 100] | min] | max | round }}
+        
+    - name: "Fourway Valve Servo"
+      state: >-
+        {% set fully_closed_at = states('input_number.fourway_valve_fully_closed_at') | float %}
+        {% set fully_open_at = states('input_number.fourway_valve_fully_open_at') | float %}
+        {% set valve_position = states('sensor.fourway_valve_position') | float %}
+        {% set servo = fully_closed_at - ((valve_position / 100) * (fully_closed_at - fully_open_at)) %}
+        {{ servo }}
