@@ -3,3 +3,9 @@ address         = 0x05237AE8
 rorg            = 0xA5
 func            = 0x04
 type            = 0x01
+
+[living_room/radiator]
+address         = 0x0525E580
+rorg            = 0xA5
+func            = 0x20
+type            = 0x06

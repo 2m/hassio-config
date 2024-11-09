@@ -176,10 +176,12 @@
                       "entity": "sensor.bedroom_radiator_battery"
                     },
                     {
-                      "entity": "sensor.living_room_radiator_1_battery"
+                      "entity": "binary_sensor.e2m_living_room_radiator_es",
+                      "name": "Living Room Radiator Battery"
                     },
                     {
-                      "entity": "sensor.living_room_radiator_2_battery"
+                      "entity": "binary_sensor.e2m_living_room_radiator_enie",
+                      "name": "Living Room Radiator Energy Harvesting"
                     },
                     {
                       "entity": "sensor.living_room_thermometer_battery"
@@ -188,7 +190,12 @@
                       "entity": "sensor.guest_room_radiator_battery"
                     },
                     {
-                      "entity": "sensor.e2m_bedroom_temperature_last_seen"
+                      "entity": "sensor.e2m_bedroom_temperature_last_seen",
+                      "name": "Bedroom Thermometer Last Seen"
+                    },
+                    {
+                      "entity": "sensor.e2m_living_room_radiator_last_seen",
+                      "name": "Living Room Radiator Last Seen"
                     }
                   ],
                   "title": "Batteries",
@@ -420,10 +427,10 @@
               "cards": [
                 {
                   "type": "custom:simple-thermostat",
-                  "entity": "climate.living_room_radiator_1",
+                  "entity": "climate.living_room_radiator",
                   "sensors": [
                     {
-                      "entity": "number.living_room_radiator_1_valve_position",
+                      "entity": "sensor.e2m_living_room_radiator_curval",
                       "name": "Heating"
                     }
                   ],
@@ -465,7 +472,7 @@
                   },
                   "series": [
                     {
-                      "entity": "climate.living_room_radiator_1",
+                      "entity": "climate.living_room_radiator",
                       "attribute": "current_temperature",
                       "name": "Temperature",
                       "unit": "°C",
@@ -477,7 +484,7 @@
                       }
                     },
                     {
-                      "entity": "climate.living_room_radiator_1",
+                      "entity": "climate.living_room_radiator",
                       "attribute": "temperature",
                       "name": "Setpoint",
                       "unit": "°C",
@@ -489,111 +496,7 @@
                       }
                     },
                     {
-                      "entity": "number.living_room_radiator_1_valve_position",
-                      "name": "Heating 1",
-                      "unit": "%",
-                      "yaxis_id": "heating",
-                      "color": "lightgray",
-                      "opacity": 0.5,
-                      "type": "area",
-                      "group_by": {
-                        "func": "avg",
-                        "duration": "2min"
-                      }
-                    }
-                  ],
-                  "yaxis": [
-                    {
-                      "id": "temp",
-                      "min": "|-1|",
-                      "max": "|+1|"
-                    },
-                    {
-                      "id": "heating",
-                      "min": 0,
-                      "max": 100,
-                      "opposite": true
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "vertical-stack",
-              "title": "Living Room 2",
-              "cards": [
-                {
-                  "type": "custom:simple-thermostat",
-                  "entity": "climate.living_room_radiator_2",
-                  "sensors": [
-                    {
-                      "entity": "number.living_room_radiator_2_valve_position",
-                      "name": "Heating"
-                    }
-                  ],
-                  "layout": {
-                    "step": "row"
-                  },
-                  "control": false,
-                  "header": false,
-                  "hide": {
-                    "state": true
-                  },
-                  "step_size": 1
-                },
-                {
-                  "type": "custom:apexcharts-card",
-                  "graph_span": "12h",
-                  "all_series_config": {
-                    "stroke_width": 2
-                  },
-                  "apex_config": {
-                    "stroke": {
-                      "dashArray": [
-                        0,
-                        5,
-                        0
-                      ]
-                    },
-                    "tooltip": {
-                      "fixed": {
-                        "enabled": true
-                      },
-                      "x": {
-                        "show": false
-                      }
-                    },
-                    "legend": {
-                      "show": false
-                    }
-                  },
-                  "series": [
-                    {
-                      "entity": "climate.living_room_radiator_2",
-                      "attribute": "current_temperature",
-                      "name": "Temperature",
-                      "unit": "°C",
-                      "yaxis_id": "temp",
-                      "color": "orange",
-                      "group_by": {
-                        "func": "avg",
-                        "duration": "2min"
-                      }
-                    },
-                    {
-                      "entity": "climate.living_room_radiator_2",
-                      "attribute": "temperature",
-                      "name": "Setpoint",
-                      "unit": "°C",
-                      "yaxis_id": "temp",
-                      "color": "lightblue",
-                      "group_by": {
-                        "func": "avg",
-                        "duration": "2min"
-                      }
-                    },
-                    {
-                      "entity": "number.living_room_radiator_2_valve_position",
+                      "entity": "sensor.e2m_living_room_radiator_curval",
                       "name": "Heating 1",
                       "unit": "%",
                       "yaxis_id": "heating",
@@ -643,7 +546,12 @@
                         "climate.bedroom_radiator"
                       ]
                     }
-                  ]
+                  ],
+                  "include": [
+                    "climate.guest_room_radiator",
+                    "climate.living_room_radiator"
+                  ],
+                  "exclude": []
                 }
               ]
             }
@@ -928,6 +836,9 @@
                         },
                         {
                           "entity": "sensor.komfovent_heat_exchanger"
+                        },
+                        {
+                          "entity": "sensor.supply_temperature_difference"
                         }
                       ]
                     }

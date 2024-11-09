@@ -1,0 +1,27 @@
+climate:
+  - platform: climate_template
+    name: Living Room Radiator
+    min_temp: 14
+    max_temp: 30
+    modes:
+      - "heat"
+      - "off"
+    
+    current_temperature_template: "{{ states('number.e2m_living_room_radiator_config_temperature_rcu') }}"
+    target_temperature_template: "{{ states('sensor.e2m_living_room_radiator_setpoint_temperature') }}"
+    hvac_mode_template: "{% if states('sensor.e2m_living_room_radiator_curval') | float > 0 %}heat{% else %}off{% endif %}"
+
+    set_temperature:
+      # only continue if the setpoint temperature change is coming from user interaction
+      - condition: template
+        value_template: "{{ temperature | int != states('sensor.e2m_living_room_radiator_setpoint_temperature') | int }}"
+    
+      - service: number.set_value
+        target:
+          entity_id: number.e2m_living_room_radiator_config_temperature_setpoint
+        data:
+          value: "{{ temperature }}"
+      
+      - service: button.press
+        target:
+          entity_id: button.e2m_living_room_radiator_set_config

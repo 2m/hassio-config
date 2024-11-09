@@ -1,5 +1,5 @@
 - id: '1672385155271'
-  alias: Low circulation when no free cooling
+  alias: Komfovent low temp diff -> low circulation
   description: ''
   trigger:
   - platform: template
@@ -19,7 +19,7 @@
       value: 2
   mode: single
 - id: '1672385248136'
-  alias: Turn on high circulation when free cooling
+  alias: Komfovent high temp diff -> high circulation
   description: ''
   trigger:
   - platform: template
@@ -53,25 +53,26 @@
 - id: '1677594121190'
   alias: Living Room Thermometer -> Radiator
   description: ''
-  trigger:
-  - platform: state
-    entity_id:
+  triggers:
+  - entity_id:
     - sensor.living_room_thermometer_temperature
     not_to:
     - unknown
     - unavailable
-  condition: []
-  action:
-  - service: shell_command.set_radiator_temperature
+    trigger: state
+  conditions: []
+  actions:
+  - action: number.set_value
+    metadata: {}
     data:
-      radiator: '{{ device_attr(''climate.living_room_radiator_1'', ''configuration_url'')
-        }}'
-      temp: '{{ states.sensor.living_room_thermometer_temperature.state }}'
-  - service: shell_command.set_radiator_temperature
-    data:
-      radiator: '{{ device_attr(''climate.living_room_radiator_2'', ''configuration_url'')
-        }}'
-      temp: '{{ states.sensor.living_room_thermometer_temperature.state }}'
+      value: '{{ states(''sensor.living_room_thermometer_temperature'') }}'
+    target:
+      entity_id: number.e2m_living_room_radiator_config_temperature_rcu
+  - action: button.press
+    metadata: {}
+    data: {}
+    target:
+      entity_id: button.e2m_living_room_radiator_set_config
   mode: single
 - id: '1677594121191'
   alias: Bedroom Thermometer -> Radiator
@@ -109,8 +110,8 @@
     entity_id: light.yellow
     domain: light
   - type: turn_off
-    device_id: 5da32f6d013b7a61bceb2f7159611937
-    entity_id: 4b2df4626044b894f039352ae6cdb0ec
+    device_id: 3d5e494fa8b630ba7fbe894d6f3c3aa5
+    entity_id: 034421f36342597235319ddd3470bd1b
     domain: light
   mode: single
 - id: '1681884317399'
@@ -131,8 +132,8 @@
     entity_id: light.yellow
     domain: light
   - type: turn_on
-    device_id: 5da32f6d013b7a61bceb2f7159611937
-    entity_id: 4b2df4626044b894f039352ae6cdb0ec
+    device_id: 3d5e494fa8b630ba7fbe894d6f3c3aa5
+    entity_id: 034421f36342597235319ddd3470bd1b
     domain: light
   mode: single
 - id: '1689009295449'
