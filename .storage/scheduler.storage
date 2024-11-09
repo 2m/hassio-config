@@ -1,0 +1,1502 @@
+{
+  "version": 3,
+  "minor_version": 1,
+  "key": "scheduler.storage",
+  "data": {
+    "schedules": [
+      {
+        "schedule_id": "1ef1c3",
+        "timeslots": [
+          {
+            "start": "00:00:00",
+            "stop": "06:00:00",
+            "conditions": [
+              {
+                "entity_id": "input_select.sildymas",
+                "attribute": "state",
+                "value": "Kietas kuras",
+                "match_type": "is"
+              }
+            ],
+            "condition_type": "or",
+            "track_conditions": true,
+            "actions": [
+              {
+                "service": "climate.set_temperature",
+                "entity_id": "climate.svetaines_radiatorius",
+                "service_data": {
+                  "hvac_mode": "heat",
+                  "temperature": 12
+                }
+              }
+            ]
+          },
+          {
+            "start": "06:00:00",
+            "stop": "22:00:00",
+            "conditions": [
+              {
+                "entity_id": "input_select.sildymas",
+                "attribute": "state",
+                "value": "Kietas kuras",
+                "match_type": "is"
+              }
+            ],
+            "condition_type": "or",
+            "track_conditions": true,
+            "actions": [
+              {
+                "service": "climate.set_temperature",
+                "entity_id": "climate.svetaines_radiatorius",
+                "service_data": {
+                  "hvac_mode": "heat",
+                  "temperature": 31
+                }
+              }
+            ]
+          },
+          {
+            "start": "22:00:00",
+            "stop": "00:00:00",
+            "conditions": [
+              {
+                "entity_id": "input_select.sildymas",
+                "attribute": "state",
+                "value": "Kietas kuras",
+                "match_type": "is"
+              }
+            ],
+            "condition_type": "or",
+            "track_conditions": true,
+            "actions": [
+              {
+                "service": "climate.set_temperature",
+                "entity_id": "climate.svetaines_radiatorius",
+                "service_data": {
+                  "hvac_mode": "heat",
+                  "temperature": 12
+                }
+              }
+            ]
+          }
+        ],
+        "weekdays": [
+          "daily"
+        ],
+        "start_date": null,
+        "end_date": null,
+        "repeat_type": "repeat",
+        "name": "",
+        "enabled": true
+      },
+      {
+        "schedule_id": "3c3c70",
+        "timeslots": [
+          {
+            "start": "00:00:00",
+            "stop": "07:00:00",
+            "conditions": [
+              {
+                "entity_id": "input_select.sildymas",
+                "attribute": "state",
+                "value": "Dujos",
+                "match_type": "is"
+              }
+            ],
+            "condition_type": "or",
+            "track_conditions": true,
+            "actions": [
+              {
+                "service": "climate.set_temperature",
+                "entity_id": "climate.svetaines_radiatorius",
+                "service_data": {
+                  "hvac_mode": "heat",
+                  "temperature": 18
+                }
+              }
+            ]
+          },
+          {
+            "start": "07:00:00",
+            "stop": "22:00:00",
+            "conditions": [
+              {
+                "entity_id": "input_select.sildymas",
+                "attribute": "state",
+                "value": "Dujos",
+                "match_type": "is"
+              }
+            ],
+            "condition_type": "or",
+            "track_conditions": true,
+            "actions": [
+              {
+                "service": "climate.set_temperature",
+                "entity_id": "climate.svetaines_radiatorius",
+                "service_data": {
+                  "hvac_mode": "heat",
+                  "temperature": 20.5
+                }
+              }
+            ]
+          },
+          {
+            "start": "22:00:00",
+            "stop": "00:00:00",
+            "conditions": [
+              {
+                "entity_id": "input_select.sildymas",
+                "attribute": "state",
+                "value": "Dujos",
+                "match_type": "is"
+              }
+            ],
+            "condition_type": "or",
+            "track_conditions": true,
+            "actions": [
+              {
+                "service": "climate.set_temperature",
+                "entity_id": "climate.svetaines_radiatorius",
+                "service_data": {
+                  "hvac_mode": "heat",
+                  "temperature": 18
+                }
+              }
+            ]
+          }
+        ],
+        "weekdays": [
+          "daily"
+        ],
+        "start_date": null,
+        "end_date": null,
+        "repeat_type": "repeat",
+        "name": "",
+        "enabled": true
+      },
+      {
+        "schedule_id": "18c451",
+        "timeslots": [
+          {
+            "start": "00:00:00",
+            "stop": "04:20:00",
+            "conditions": [
+              {
+                "entity_id": "input_select.sildymas",
+                "attribute": "state",
+                "value": "Dujos",
+                "match_type": "is"
+              }
+            ],
+            "condition_type": "or",
+            "track_conditions": true,
+            "actions": [
+              {
+                "service": "climate.set_temperature",
+                "entity_id": "climate.virtuves_radiatorius",
+                "service_data": {
+                  "hvac_mode": "heat",
+                  "temperature": 18
+                }
+              },
+              {
+                "service": "climate.set_temperature",
+                "entity_id": "climate.virtuves_radiatorius_2",
+                "service_data": {
+                  "hvac_mode": "heat",
+                  "temperature": 18
+                }
+              }
+            ]
+          },
+          {
+            "start": "04:20:00",
+            "stop": "05:50:00",
+            "conditions": [
+              {
+                "entity_id": "input_select.sildymas",
+                "attribute": "state",
+                "value": "Dujos",
+                "match_type": "is"
+              }
+            ],
+            "condition_type": "or",
+            "track_conditions": true,
+            "actions": [
+              {
+                "service": "climate.set_temperature",
+                "entity_id": "climate.virtuves_radiatorius",
+                "service_data": {
+                  "hvac_mode": "heat",
+                  "temperature": 21
+                }
+              },
+              {
+                "service": "climate.set_temperature",
+                "entity_id": "climate.virtuves_radiatorius_2",
+                "service_data": {
+                  "hvac_mode": "heat",
+                  "temperature": 21
+                }
+              }
+            ]
+          },
+          {
+            "start": "05:50:00",
+            "stop": "22:00:00",
+            "conditions": [
+              {
+                "entity_id": "input_select.sildymas",
+                "attribute": "state",
+                "value": "Dujos",
+                "match_type": "is"
+              }
+            ],
+            "condition_type": "or",
+            "track_conditions": true,
+            "actions": [
+              {
+                "service": "climate.set_temperature",
+                "entity_id": "climate.virtuves_radiatorius",
+                "service_data": {
+                  "hvac_mode": "heat",
+                  "temperature": 20.5
+                }
+              },
+              {
+                "service": "climate.set_temperature",
+                "entity_id": "climate.virtuves_radiatorius_2",
+                "service_data": {
+                  "hvac_mode": "heat",
+                  "temperature": 20.5
+                }
+              }
+            ]
+          },
+          {
+            "start": "22:00:00",
+            "stop": "00:00:00",
+            "conditions": [
+              {
+                "entity_id": "input_select.sildymas",
+                "attribute": "state",
+                "value": "Dujos",
+                "match_type": "is"
+              }
+            ],
+            "condition_type": "or",
+            "track_conditions": true,
+            "actions": [
+              {
+                "service": "climate.set_temperature",
+                "entity_id": "climate.virtuves_radiatorius",
+                "service_data": {
+                  "hvac_mode": "heat",
+                  "temperature": 18
+                }
+              },
+              {
+                "service": "climate.set_temperature",
+                "entity_id": "climate.virtuves_radiatorius_2",
+                "service_data": {
+                  "hvac_mode": "heat",
+                  "temperature": 18
+                }
+              }
+            ]
+          }
+        ],
+        "weekdays": [
+          "daily"
+        ],
+        "start_date": null,
+        "end_date": null,
+        "repeat_type": "repeat",
+        "name": "",
+        "enabled": true
+      },
+      {
+        "schedule_id": "1b54b5",
+        "timeslots": [
+          {
+            "start": "00:00:00",
+            "stop": "05:40:00",
+            "conditions": [
+              {
+                "entity_id": "input_select.sildymas",
+                "attribute": "state",
+                "value": "Dujos",
+                "match_type": "is"
+              }
+            ],
+            "condition_type": "or",
+            "track_conditions": true,
+            "actions": [
+              {
+                "service": "climate.set_temperature",
+                "entity_id": "climate.mamos_radiatorius",
+                "service_data": {
+                  "hvac_mode": "heat",
+                  "temperature": 18.5
+                }
+              },
+              {
+                "service": "climate.set_temperature",
+                "entity_id": "climate.mamos_radiatorius_2",
+                "service_data": {
+                  "hvac_mode": "heat",
+                  "temperature": 18.5
+                }
+              }
+            ]
+          },
+          {
+            "start": "05:40:00",
+            "stop": "22:00:00",
+            "conditions": [
+              {
+                "entity_id": "input_select.sildymas",
+                "attribute": "state",
+                "value": "Dujos",
+                "match_type": "is"
+              }
+            ],
+            "condition_type": "or",
+            "track_conditions": true,
+            "actions": [
+              {
+                "service": "climate.set_temperature",
+                "entity_id": "climate.mamos_radiatorius",
+                "service_data": {
+                  "hvac_mode": "heat",
+                  "temperature": 20.5
+                }
+              },
+              {
+                "service": "climate.set_temperature",
+                "entity_id": "climate.mamos_radiatorius_2",
+                "service_data": {
+                  "hvac_mode": "heat",
+                  "temperature": 20.5
+                }
+              }
+            ]
+          },
+          {
+            "start": "22:00:00",
+            "stop": "00:00:00",
+            "conditions": [
+              {
+                "entity_id": "input_select.sildymas",
+                "attribute": "state",
+                "value": "Dujos",
+                "match_type": "is"
+              }
+            ],
+            "condition_type": "or",
+            "track_conditions": true,
+            "actions": [
+              {
+                "service": "climate.set_temperature",
+                "entity_id": "climate.mamos_radiatorius",
+                "service_data": {
+                  "hvac_mode": "heat",
+                  "temperature": 18.5
+                }
+              },
+              {
+                "service": "climate.set_temperature",
+                "entity_id": "climate.mamos_radiatorius_2",
+                "service_data": {
+                  "hvac_mode": "heat",
+                  "temperature": 18.5
+                }
+              }
+            ]
+          }
+        ],
+        "weekdays": [
+          "daily"
+        ],
+        "start_date": null,
+        "end_date": null,
+        "repeat_type": "repeat",
+        "name": "",
+        "enabled": true
+      },
+      {
+        "schedule_id": "89fb91",
+        "timeslots": [
+          {
+            "start": "00:00:00",
+            "stop": "03:50:00",
+            "conditions": [
+              {
+                "entity_id": "input_select.sildymas",
+                "attribute": "state",
+                "value": "Kietas kuras",
+                "match_type": "is"
+              }
+            ],
+            "condition_type": "or",
+            "track_conditions": true,
+            "actions": [
+              {
+                "service": "climate.set_temperature",
+                "entity_id": "climate.mamos_radiatorius_2",
+                "service_data": {
+                  "hvac_mode": "heat",
+                  "temperature": 12
+                }
+              },
+              {
+                "service": "climate.set_temperature",
+                "entity_id": "climate.mamos_radiatorius",
+                "service_data": {
+                  "hvac_mode": "heat",
+                  "temperature": 12
+                }
+              }
+            ]
+          },
+          {
+            "start": "03:50:00",
+            "stop": "22:00:00",
+            "conditions": [
+              {
+                "entity_id": "input_select.sildymas",
+                "attribute": "state",
+                "value": "Kietas kuras",
+                "match_type": "is"
+              }
+            ],
+            "condition_type": "or",
+            "track_conditions": true,
+            "actions": [
+              {
+                "service": "climate.set_temperature",
+                "entity_id": "climate.mamos_radiatorius_2",
+                "service_data": {
+                  "hvac_mode": "heat",
+                  "temperature": 31
+                }
+              },
+              {
+                "service": "climate.set_temperature",
+                "entity_id": "climate.mamos_radiatorius",
+                "service_data": {
+                  "hvac_mode": "heat",
+                  "temperature": 31
+                }
+              }
+            ]
+          },
+          {
+            "start": "22:00:00",
+            "stop": "00:00:00",
+            "conditions": [
+              {
+                "entity_id": "input_select.sildymas",
+                "attribute": "state",
+                "value": "Kietas kuras",
+                "match_type": "is"
+              }
+            ],
+            "condition_type": "or",
+            "track_conditions": true,
+            "actions": [
+              {
+                "service": "climate.set_temperature",
+                "entity_id": "climate.mamos_radiatorius_2",
+                "service_data": {
+                  "hvac_mode": "heat",
+                  "temperature": 12
+                }
+              },
+              {
+                "service": "climate.set_temperature",
+                "entity_id": "climate.mamos_radiatorius",
+                "service_data": {
+                  "hvac_mode": "heat",
+                  "temperature": 12
+                }
+              }
+            ]
+          }
+        ],
+        "weekdays": [
+          "daily"
+        ],
+        "start_date": null,
+        "end_date": null,
+        "repeat_type": "repeat",
+        "name": "",
+        "enabled": true
+      },
+      {
+        "schedule_id": "4e4483",
+        "timeslots": [
+          {
+            "start": "00:00:00",
+            "stop": "08:00:00",
+            "conditions": [
+              {
+                "entity_id": "input_select.sildymas",
+                "attribute": "state",
+                "value": "Kietas kuras",
+                "match_type": "is"
+              }
+            ],
+            "condition_type": "or",
+            "track_conditions": true,
+            "actions": [
+              {
+                "service": "climate.set_temperature",
+                "entity_id": "climate.virtuves_radiatorius",
+                "service_data": {
+                  "hvac_mode": "heat",
+                  "temperature": 23
+                }
+              },
+              {
+                "service": "climate.set_temperature",
+                "entity_id": "climate.virtuves_radiatorius_2",
+                "service_data": {
+                  "hvac_mode": "heat",
+                  "temperature": 23
+                }
+              }
+            ]
+          },
+          {
+            "start": "08:00:00",
+            "stop": "19:20:00",
+            "conditions": [
+              {
+                "entity_id": "input_select.sildymas",
+                "attribute": "state",
+                "value": "Kietas kuras",
+                "match_type": "is"
+              }
+            ],
+            "condition_type": "or",
+            "track_conditions": true,
+            "actions": [
+              {
+                "service": "climate.set_temperature",
+                "entity_id": "climate.virtuves_radiatorius",
+                "service_data": {
+                  "hvac_mode": "heat",
+                  "temperature": 31
+                }
+              },
+              {
+                "service": "climate.set_temperature",
+                "entity_id": "climate.virtuves_radiatorius_2",
+                "service_data": {
+                  "hvac_mode": "heat",
+                  "temperature": 31
+                }
+              }
+            ]
+          },
+          {
+            "start": "19:20:00",
+            "stop": "00:00:00",
+            "conditions": [
+              {
+                "entity_id": "input_select.sildymas",
+                "attribute": "state",
+                "value": "Kietas kuras",
+                "match_type": "is"
+              }
+            ],
+            "condition_type": "or",
+            "track_conditions": true,
+            "actions": [
+              {
+                "service": "climate.set_temperature",
+                "entity_id": "climate.virtuves_radiatorius",
+                "service_data": {
+                  "hvac_mode": "heat",
+                  "temperature": 31
+                }
+              },
+              {
+                "service": "climate.set_temperature",
+                "entity_id": "climate.virtuves_radiatorius_2",
+                "service_data": {
+                  "hvac_mode": "heat",
+                  "temperature": 31
+                }
+              }
+            ]
+          }
+        ],
+        "weekdays": [
+          "daily"
+        ],
+        "start_date": null,
+        "end_date": null,
+        "repeat_type": "repeat",
+        "name": "",
+        "enabled": true
+      },
+      {
+        "schedule_id": "313116",
+        "timeslots": [
+          {
+            "start": "00:00:00",
+            "stop": "08:00:00",
+            "conditions": [
+              {
+                "entity_id": "input_select.sildymas",
+                "attribute": "state",
+                "value": "Dujos",
+                "match_type": "is"
+              }
+            ],
+            "condition_type": "or",
+            "track_conditions": true,
+            "actions": [
+              {
+                "service": "climate.set_temperature",
+                "entity_id": "climate.tetes_radiatorius",
+                "service_data": {
+                  "hvac_mode": "heat",
+                  "temperature": 13
+                }
+              }
+            ]
+          },
+          {
+            "start": "08:00:00",
+            "stop": "16:00:00",
+            "conditions": [
+              {
+                "entity_id": "input_select.sildymas",
+                "attribute": "state",
+                "value": "Dujos",
+                "match_type": "is"
+              }
+            ],
+            "condition_type": "or",
+            "track_conditions": true,
+            "actions": [
+              {
+                "service": "climate.set_temperature",
+                "entity_id": "climate.tetes_radiatorius",
+                "service_data": {
+                  "hvac_mode": "heat",
+                  "temperature": 15.5
+                }
+              }
+            ]
+          },
+          {
+            "start": "16:00:00",
+            "stop": "00:00:00",
+            "conditions": [
+              {
+                "entity_id": "input_select.sildymas",
+                "attribute": "state",
+                "value": "Dujos",
+                "match_type": "is"
+              }
+            ],
+            "condition_type": "or",
+            "track_conditions": true,
+            "actions": [
+              {
+                "service": "climate.set_temperature",
+                "entity_id": "climate.tetes_radiatorius",
+                "service_data": {
+                  "hvac_mode": "heat",
+                  "temperature": 15.5
+                }
+              }
+            ]
+          }
+        ],
+        "weekdays": [
+          "daily"
+        ],
+        "start_date": null,
+        "end_date": null,
+        "repeat_type": "repeat",
+        "name": "",
+        "enabled": true
+      },
+      {
+        "schedule_id": "c59534",
+        "timeslots": [
+          {
+            "start": "00:00:00",
+            "stop": "06:00:00",
+            "conditions": [
+              {
+                "entity_id": "input_select.sildymas",
+                "attribute": "state",
+                "value": "Kietas kuras",
+                "match_type": "is"
+              }
+            ],
+            "condition_type": "or",
+            "track_conditions": false,
+            "actions": [
+              {
+                "service": "climate.set_temperature",
+                "entity_id": "climate.tetes_radiatorius",
+                "service_data": {
+                  "hvac_mode": "heat",
+                  "temperature": 15.5
+                }
+              }
+            ]
+          },
+          {
+            "start": "06:00:00",
+            "stop": "19:30:00",
+            "conditions": [
+              {
+                "entity_id": "input_select.sildymas",
+                "attribute": "state",
+                "value": "Kietas kuras",
+                "match_type": "is"
+              }
+            ],
+            "condition_type": "or",
+            "track_conditions": false,
+            "actions": [
+              {
+                "service": "climate.set_temperature",
+                "entity_id": "climate.tetes_radiatorius",
+                "service_data": {
+                  "hvac_mode": "heat",
+                  "temperature": 15.5
+                }
+              }
+            ]
+          },
+          {
+            "start": "19:30:00",
+            "stop": "00:00:00",
+            "conditions": [
+              {
+                "entity_id": "input_select.sildymas",
+                "attribute": "state",
+                "value": "Kietas kuras",
+                "match_type": "is"
+              }
+            ],
+            "condition_type": "or",
+            "track_conditions": false,
+            "actions": [
+              {
+                "service": "climate.set_temperature",
+                "entity_id": "climate.tetes_radiatorius",
+                "service_data": {
+                  "hvac_mode": "heat",
+                  "temperature": 15
+                }
+              }
+            ]
+          }
+        ],
+        "weekdays": [
+          "daily"
+        ],
+        "start_date": null,
+        "end_date": null,
+        "repeat_type": "repeat",
+        "name": "",
+        "enabled": true
+      },
+      {
+        "schedule_id": "4dec98",
+        "timeslots": [
+          {
+            "start": "00:00:00",
+            "stop": "05:20:00",
+            "conditions": [
+              {
+                "entity_id": "input_select.sildymas",
+                "attribute": "state",
+                "value": "Dujos",
+                "match_type": "is"
+              }
+            ],
+            "condition_type": "or",
+            "track_conditions": true,
+            "actions": [
+              {
+                "service": "climate.set_temperature",
+                "entity_id": "climate.gyvatukas",
+                "service_data": {
+                  "hvac_mode": "heat",
+                  "temperature": 7
+                }
+              }
+            ]
+          },
+          {
+            "start": "05:20:00",
+            "stop": "06:00:00",
+            "conditions": [
+              {
+                "entity_id": "input_select.sildymas",
+                "attribute": "state",
+                "value": "Dujos",
+                "match_type": "is"
+              }
+            ],
+            "condition_type": "or",
+            "track_conditions": true,
+            "actions": [
+              {
+                "service": "climate.set_temperature",
+                "entity_id": "climate.gyvatukas",
+                "service_data": {
+                  "hvac_mode": "heat",
+                  "temperature": 35
+                }
+              }
+            ]
+          },
+          {
+            "start": "06:00:00",
+            "stop": "19:40:00",
+            "conditions": [
+              {
+                "entity_id": "input_select.sildymas",
+                "attribute": "state",
+                "value": "Dujos",
+                "match_type": "is"
+              }
+            ],
+            "condition_type": "or",
+            "track_conditions": true,
+            "actions": [
+              {
+                "service": "climate.set_temperature",
+                "entity_id": "climate.gyvatukas",
+                "service_data": {
+                  "hvac_mode": "heat",
+                  "temperature": 35
+                }
+              }
+            ]
+          },
+          {
+            "start": "19:40:00",
+            "stop": "21:00:00",
+            "conditions": [
+              {
+                "entity_id": "input_select.sildymas",
+                "attribute": "state",
+                "value": "Dujos",
+                "match_type": "is"
+              }
+            ],
+            "condition_type": "or",
+            "track_conditions": true,
+            "actions": [
+              {
+                "service": "climate.set_temperature",
+                "entity_id": "climate.gyvatukas",
+                "service_data": {
+                  "hvac_mode": "heat",
+                  "temperature": 35
+                }
+              }
+            ]
+          },
+          {
+            "start": "21:00:00",
+            "stop": "00:00:00",
+            "conditions": [
+              {
+                "entity_id": "input_select.sildymas",
+                "attribute": "state",
+                "value": "Dujos",
+                "match_type": "is"
+              }
+            ],
+            "condition_type": "or",
+            "track_conditions": true,
+            "actions": [
+              {
+                "service": "climate.set_temperature",
+                "entity_id": "climate.gyvatukas",
+                "service_data": {
+                  "hvac_mode": "heat",
+                  "temperature": 7
+                }
+              }
+            ]
+          }
+        ],
+        "weekdays": [
+          "daily"
+        ],
+        "start_date": null,
+        "end_date": null,
+        "repeat_type": "repeat",
+        "name": "",
+        "enabled": true
+      },
+      {
+        "schedule_id": "dda068",
+        "timeslots": [
+          {
+            "start": "00:00:00",
+            "stop": "08:00:00",
+            "conditions": [
+              {
+                "entity_id": "input_select.sildymas",
+                "attribute": "state",
+                "value": "Gyvatukas vasarą",
+                "match_type": "is"
+              }
+            ],
+            "condition_type": "or",
+            "track_conditions": true,
+            "actions": [
+              {
+                "service": "climate.set_temperature",
+                "entity_id": "climate.mamos_radiatorius",
+                "service_data": {
+                  "hvac_mode": "heat",
+                  "temperature": 10
+                }
+              },
+              {
+                "service": "climate.set_temperature",
+                "entity_id": "climate.mamos_radiatorius_2",
+                "service_data": {
+                  "hvac_mode": "heat",
+                  "temperature": 10
+                }
+              }
+            ]
+          },
+          {
+            "start": "08:00:00",
+            "stop": "16:00:00",
+            "conditions": [
+              {
+                "entity_id": "input_select.sildymas",
+                "attribute": "state",
+                "value": "Gyvatukas vasarą",
+                "match_type": "is"
+              }
+            ],
+            "condition_type": "or",
+            "track_conditions": true,
+            "actions": [
+              {
+                "service": "climate.set_temperature",
+                "entity_id": "climate.mamos_radiatorius",
+                "service_data": {
+                  "hvac_mode": "heat",
+                  "temperature": 10
+                }
+              },
+              {
+                "service": "climate.set_temperature",
+                "entity_id": "climate.mamos_radiatorius_2",
+                "service_data": {
+                  "hvac_mode": "heat",
+                  "temperature": 10
+                }
+              }
+            ]
+          },
+          {
+            "start": "16:00:00",
+            "stop": "00:00:00",
+            "conditions": [
+              {
+                "entity_id": "input_select.sildymas",
+                "attribute": "state",
+                "value": "Gyvatukas vasarą",
+                "match_type": "is"
+              }
+            ],
+            "condition_type": "or",
+            "track_conditions": true,
+            "actions": [
+              {
+                "service": "climate.set_temperature",
+                "entity_id": "climate.mamos_radiatorius",
+                "service_data": {
+                  "hvac_mode": "heat",
+                  "temperature": 10
+                }
+              },
+              {
+                "service": "climate.set_temperature",
+                "entity_id": "climate.mamos_radiatorius_2",
+                "service_data": {
+                  "hvac_mode": "heat",
+                  "temperature": 10
+                }
+              }
+            ]
+          }
+        ],
+        "weekdays": [
+          "daily"
+        ],
+        "start_date": null,
+        "end_date": null,
+        "repeat_type": "repeat",
+        "name": null,
+        "enabled": true
+      },
+      {
+        "schedule_id": "3b4d61",
+        "timeslots": [
+          {
+            "start": "00:00:00",
+            "stop": "08:00:00",
+            "conditions": [
+              {
+                "entity_id": "input_select.sildymas",
+                "attribute": "state",
+                "value": "Gyvatukas vasarą",
+                "match_type": "is"
+              }
+            ],
+            "condition_type": "or",
+            "track_conditions": true,
+            "actions": [
+              {
+                "service": "climate.set_temperature",
+                "entity_id": "climate.svetaines_radiatorius",
+                "service_data": {
+                  "hvac_mode": "heat",
+                  "temperature": 10
+                }
+              }
+            ]
+          },
+          {
+            "start": "08:00:00",
+            "stop": "16:00:00",
+            "conditions": [
+              {
+                "entity_id": "input_select.sildymas",
+                "attribute": "state",
+                "value": "Gyvatukas vasarą",
+                "match_type": "is"
+              }
+            ],
+            "condition_type": "or",
+            "track_conditions": true,
+            "actions": [
+              {
+                "service": "climate.set_temperature",
+                "entity_id": "climate.svetaines_radiatorius",
+                "service_data": {
+                  "hvac_mode": "heat",
+                  "temperature": 10
+                }
+              }
+            ]
+          },
+          {
+            "start": "16:00:00",
+            "stop": "00:00:00",
+            "conditions": [
+              {
+                "entity_id": "input_select.sildymas",
+                "attribute": "state",
+                "value": "Gyvatukas vasarą",
+                "match_type": "is"
+              }
+            ],
+            "condition_type": "or",
+            "track_conditions": true,
+            "actions": [
+              {
+                "service": "climate.set_temperature",
+                "entity_id": "climate.svetaines_radiatorius",
+                "service_data": {
+                  "hvac_mode": "heat",
+                  "temperature": 10
+                }
+              }
+            ]
+          }
+        ],
+        "weekdays": [
+          "daily"
+        ],
+        "start_date": null,
+        "end_date": null,
+        "repeat_type": "repeat",
+        "name": null,
+        "enabled": true
+      },
+      {
+        "schedule_id": "2debde",
+        "timeslots": [
+          {
+            "start": "00:00:00",
+            "stop": "08:00:00",
+            "conditions": [
+              {
+                "entity_id": "input_select.sildymas",
+                "attribute": "state",
+                "value": "Gyvatukas vasarą",
+                "match_type": "is"
+              }
+            ],
+            "condition_type": "or",
+            "track_conditions": true,
+            "actions": [
+              {
+                "service": "climate.set_temperature",
+                "entity_id": "climate.tetes_radiatorius",
+                "service_data": {
+                  "hvac_mode": "heat",
+                  "temperature": 10
+                }
+              }
+            ]
+          },
+          {
+            "start": "08:00:00",
+            "stop": "16:00:00",
+            "conditions": [
+              {
+                "entity_id": "input_select.sildymas",
+                "attribute": "state",
+                "value": "Gyvatukas vasarą",
+                "match_type": "is"
+              }
+            ],
+            "condition_type": "or",
+            "track_conditions": true,
+            "actions": [
+              {
+                "service": "climate.set_temperature",
+                "entity_id": "climate.tetes_radiatorius",
+                "service_data": {
+                  "hvac_mode": "heat",
+                  "temperature": 10
+                }
+              }
+            ]
+          },
+          {
+            "start": "16:00:00",
+            "stop": "00:00:00",
+            "conditions": [
+              {
+                "entity_id": "input_select.sildymas",
+                "attribute": "state",
+                "value": "Gyvatukas vasarą",
+                "match_type": "is"
+              }
+            ],
+            "condition_type": "or",
+            "track_conditions": true,
+            "actions": [
+              {
+                "service": "climate.set_temperature",
+                "entity_id": "climate.tetes_radiatorius",
+                "service_data": {
+                  "hvac_mode": "heat",
+                  "temperature": 10
+                }
+              }
+            ]
+          }
+        ],
+        "weekdays": [
+          "daily"
+        ],
+        "start_date": null,
+        "end_date": null,
+        "repeat_type": "repeat",
+        "name": null,
+        "enabled": true
+      },
+      {
+        "schedule_id": "ecebdf",
+        "timeslots": [
+          {
+            "start": "00:00:00",
+            "stop": "08:00:00",
+            "conditions": [
+              {
+                "entity_id": "input_select.sildymas",
+                "attribute": "state",
+                "value": "Gyvatukas vasarą",
+                "match_type": "is"
+              }
+            ],
+            "condition_type": "or",
+            "track_conditions": true,
+            "actions": [
+              {
+                "service": "climate.set_temperature",
+                "entity_id": "climate.virtuves_radiatorius",
+                "service_data": {
+                  "hvac_mode": "heat",
+                  "temperature": 10
+                }
+              },
+              {
+                "service": "climate.set_temperature",
+                "entity_id": "climate.virtuves_radiatorius_2",
+                "service_data": {
+                  "hvac_mode": "heat",
+                  "temperature": 10
+                }
+              }
+            ]
+          },
+          {
+            "start": "08:00:00",
+            "stop": "16:00:00",
+            "conditions": [
+              {
+                "entity_id": "input_select.sildymas",
+                "attribute": "state",
+                "value": "Gyvatukas vasarą",
+                "match_type": "is"
+              }
+            ],
+            "condition_type": "or",
+            "track_conditions": true,
+            "actions": [
+              {
+                "service": "climate.set_temperature",
+                "entity_id": "climate.virtuves_radiatorius",
+                "service_data": {
+                  "hvac_mode": "heat",
+                  "temperature": 10
+                }
+              },
+              {
+                "service": "climate.set_temperature",
+                "entity_id": "climate.virtuves_radiatorius_2",
+                "service_data": {
+                  "hvac_mode": "heat",
+                  "temperature": 10
+                }
+              }
+            ]
+          },
+          {
+            "start": "16:00:00",
+            "stop": "00:00:00",
+            "conditions": [
+              {
+                "entity_id": "input_select.sildymas",
+                "attribute": "state",
+                "value": "Gyvatukas vasarą",
+                "match_type": "is"
+              }
+            ],
+            "condition_type": "or",
+            "track_conditions": true,
+            "actions": [
+              {
+                "service": "climate.set_temperature",
+                "entity_id": "climate.virtuves_radiatorius",
+                "service_data": {
+                  "hvac_mode": "heat",
+                  "temperature": 10
+                }
+              },
+              {
+                "service": "climate.set_temperature",
+                "entity_id": "climate.virtuves_radiatorius_2",
+                "service_data": {
+                  "hvac_mode": "heat",
+                  "temperature": 10
+                }
+              }
+            ]
+          }
+        ],
+        "weekdays": [
+          "daily"
+        ],
+        "start_date": null,
+        "end_date": null,
+        "repeat_type": "repeat",
+        "name": null,
+        "enabled": true
+      },
+      {
+        "schedule_id": "f2bb36",
+        "timeslots": [
+          {
+            "start": "00:00:00",
+            "stop": "05:20:00",
+            "conditions": [
+              {
+                "entity_id": "input_select.sildymas",
+                "attribute": "state",
+                "value": "Gyvatukas vasarą",
+                "match_type": "is"
+              }
+            ],
+            "condition_type": "or",
+            "track_conditions": true,
+            "actions": [
+              {
+                "service": "climate.set_temperature",
+                "entity_id": "climate.gyvatukas",
+                "service_data": {
+                  "hvac_mode": "heat",
+                  "temperature": 7
+                }
+              }
+            ]
+          },
+          {
+            "start": "05:20:00",
+            "stop": "06:00:00",
+            "conditions": [
+              {
+                "entity_id": "input_select.sildymas",
+                "attribute": "state",
+                "value": "Gyvatukas vasarą",
+                "match_type": "is"
+              }
+            ],
+            "condition_type": "or",
+            "track_conditions": true,
+            "actions": [
+              {
+                "service": "climate.set_temperature",
+                "entity_id": "climate.gyvatukas",
+                "service_data": {
+                  "hvac_mode": "heat",
+                  "temperature": 35
+                }
+              }
+            ]
+          },
+          {
+            "start": "06:00:00",
+            "stop": "19:40:00",
+            "conditions": [
+              {
+                "entity_id": "input_select.sildymas",
+                "attribute": "state",
+                "value": "Gyvatukas vasarą",
+                "match_type": "is"
+              }
+            ],
+            "condition_type": "or",
+            "track_conditions": true,
+            "actions": [
+              {
+                "service": "climate.set_temperature",
+                "entity_id": "climate.gyvatukas",
+                "service_data": {
+                  "hvac_mode": "heat",
+                  "temperature": 7
+                }
+              }
+            ]
+          },
+          {
+            "start": "19:40:00",
+            "stop": "21:00:00",
+            "conditions": [
+              {
+                "entity_id": "input_select.sildymas",
+                "attribute": "state",
+                "value": "Gyvatukas vasarą",
+                "match_type": "is"
+              }
+            ],
+            "condition_type": "or",
+            "track_conditions": true,
+            "actions": [
+              {
+                "service": "climate.set_temperature",
+                "entity_id": "climate.gyvatukas",
+                "service_data": {
+                  "hvac_mode": "heat",
+                  "temperature": 35
+                }
+              }
+            ]
+          },
+          {
+            "start": "21:00:00",
+            "stop": "00:00:00",
+            "conditions": [
+              {
+                "entity_id": "input_select.sildymas",
+                "attribute": "state",
+                "value": "Gyvatukas vasarą",
+                "match_type": "is"
+              }
+            ],
+            "condition_type": "or",
+            "track_conditions": true,
+            "actions": [
+              {
+                "service": "climate.set_temperature",
+                "entity_id": "climate.gyvatukas",
+                "service_data": {
+                  "hvac_mode": "heat",
+                  "temperature": 7
+                }
+              }
+            ]
+          }
+        ],
+        "weekdays": [
+          "daily"
+        ],
+        "start_date": null,
+        "end_date": null,
+        "repeat_type": "repeat",
+        "name": null,
+        "enabled": true
+      }
+    ],
+    "tags": [
+      {
+        "name": "dujos",
+        "schedules": [
+          "4dec98",
+          "1b54b5",
+          "3c3c70",
+          "313116",
+          "18c451"
+        ]
+      },
+      {
+        "name": "kietas kuras",
+        "schedules": [
+          "89fb91",
+          "1ef1c3",
+          "c59534",
+          "4e4483"
+        ]
+      },
+      {
+        "name": "gyvatukas vasarą",
+        "schedules": [
+          "dda068",
+          "3b4d61",
+          "2debde",
+          "ecebdf",
+          "f2bb36"
+        ]
+      }
+    ]
+  }
+}

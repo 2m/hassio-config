@@ -110,7 +110,7 @@ display:
     cs_pin: GPIO5
     dc_pin: GPIO16
     reset_pin: GPIO23
-    rotation: 90°
+    rotation: 270°
     invert_colors: true
     lambda: |-
       it.printf(20, 20, id(l), "%.0f%%  %.0f", id(valve_position).state, id(valve_servo_value).state);

@@ -1,0 +1,10 @@
+mqtt:
+  host: hassio
+  user: frigate
+  password: fripass
+
+detectors:
+  coral:
+    type: edgetpu
+    device: usb
+version: 0.14

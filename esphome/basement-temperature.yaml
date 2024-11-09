@@ -35,6 +35,11 @@ sensor:
     name: Temperature 4
     id: temperature_4
     update_interval: 30s
+  - platform: dallas_temp
+    address: 0xf63ce1d443237728
+    name: Water to Gas Heater
+    id: water_to_gas_heater
+    update_interval: 30s
 
 logger:
 

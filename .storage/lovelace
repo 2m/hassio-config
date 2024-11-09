@@ -785,15 +785,39 @@
               ]
             },
             {
-              "show_name": true,
-              "show_icon": true,
-              "type": "button",
-              "tap_action": {
-                "action": "toggle"
-              },
-              "entity": "switch.shellyplug_s_9dd989",
-              "name": "Dujino Pečiaus Įjungimas",
-              "icon": "mdi:gas-burner"
+              "type": "horizontal-stack",
+              "cards": [
+                {
+                  "show_name": true,
+                  "show_icon": true,
+                  "type": "button",
+                  "tap_action": {
+                    "action": "toggle"
+                  },
+                  "entity": "switch.shellyplug_s_9dd989",
+                  "name": "Dujino Pečiaus Įjungimas",
+                  "icon": "mdi:gas-burner"
+                },
+                {
+                  "type": "custom:button-card",
+                  "entity": "sensor.water_to_gas_heater",
+                  "name": "Vanduo į dujinį pečių",
+                  "show_icon": false,
+                  "show_state": true,
+                  "show_units": false,
+                  "show_last_changed": true,
+                  "styles": {
+                    "state": [
+                      {
+                        "font-size": "80px"
+                      },
+                      {
+                        "font-weight": "bold"
+                      }
+                    ]
+                  }
+                }
+              ]
             }
           ]
         }
