@@ -66,7 +66,7 @@
         "end_date": null,
         "repeat_type": "repeat",
         "name": null,
-        "enabled": true
+        "enabled": false
       },
       {
         "schedule_id": "8d56a8",
@@ -164,7 +164,7 @@
         "end_date": null,
         "repeat_type": "repeat",
         "name": null,
-        "enabled": true
+        "enabled": false
       }
     ],
     "tags": []
