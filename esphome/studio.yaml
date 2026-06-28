@@ -1,0 +1,25 @@
+esphome:
+  name: studio
+  friendly_name: studio
+
+# Replace this with your actual platform if you aren't using ESP32.
+esp32:
+  board: esp32dev
+
+logger:
+
+api:
+  encryption:
+    key: "kXkc58xOVDNq3JURfjKa5WVpveXeeFreeUQQsDMPKjA="
+
+ota:
+  - platform: esphome
+
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_password
+  ap:
+    ssid: studio Fallback Hotspot
+    password: "g5DIC8DVcdWI"
+
+captive_portal:
