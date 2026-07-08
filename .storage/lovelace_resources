@@ -10,23 +10,23 @@
         "id": "93058dfa7bd64d9faa88db85d44e290f"
       },
       {
-        "id": "77702aa29d1d41c2b28cc394dafacf58",
-        "url": "/hacsfiles/simple-thermostat/simple-thermostat.js?hacstag=158654878250",
-        "type": "module"
-      },
-      {
         "id": "15b5d7f52f484e9f861f865b86e4480a",
         "url": "/hacsfiles/apexcharts-card/apexcharts-card.js?hacstag=331701152223",
         "type": "module"
       },
       {
-        "id": "9bf84998724c4a08bbec382150bc8bbd",
-        "url": "/hacsfiles/scheduler-card/scheduler-card.js?hacstag=2862701574010",
+        "id": "1157cd6e6c0445528a914b2758b7fefd",
+        "url": "/hacsfiles/lovelace-auto-entities/auto-entities.js?hacstag=1677445841161",
         "type": "module"
       },
       {
-        "id": "1157cd6e6c0445528a914b2758b7fefd",
-        "url": "/hacsfiles/lovelace-auto-entities/auto-entities.js?hacstag=1677445841161",
+        "id": "c9cdfdc4c7b147d59a41f3e3eeac6fea",
+        "url": "/hacsfiles/scheduler-card/scheduler-card.js?hacstag=2862701574019",
+        "type": "module"
+      },
+      {
+        "id": "cebe80aef22f41ab9f6b8a56e28bf14b",
+        "url": "/hacsfiles/badge-horizontal-container-card/badge-horizontal-container-card.js?hacstag=990221998043",
         "type": "module"
       }
     ]

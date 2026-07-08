@@ -1,0 +1,610 @@
+{
+  "version": 1,
+  "minor_version": 1,
+  "key": "lovelace.lovelace",
+  "data": {
+    "config": {
+      "views": [
+        {
+          "type": "sections",
+          "path": "lights",
+          "cards": [],
+          "sections": [
+            {
+              "type": "grid",
+              "cards": [
+                {
+                  "type": "custom:auto-entities",
+                  "card": {
+                    "type": "entities",
+                    "title": "Svetainė"
+                  },
+                  "filter": {
+                    "include": [
+                      {
+                        "options": {},
+                        "area": "living_room",
+                        "domain": "light"
+                      }
+                    ],
+                    "exclude": []
+                  }
+                },
+                {
+                  "type": "custom:auto-entities",
+                  "card": {
+                    "type": "entities",
+                    "title": "Virtuvė"
+                  },
+                  "filter": {
+                    "include": [
+                      {
+                        "options": {},
+                        "area": "kitchen",
+                        "domain": "light"
+                      },
+                      {
+                        "type": "custom:badge-horizontal-container-card",
+                        "badges": [
+                          {
+                            "type": "custom:hui-entity-badge",
+                            "show_name": true,
+                            "show_state": false,
+                            "show_icon": true,
+                            "entity": "scene.gamyba",
+                            "tap_action": {
+                              "action": "toggle"
+                            }
+                          },
+                          {
+                            "type": "custom:hui-entity-badge",
+                            "show_name": true,
+                            "show_state": false,
+                            "show_icon": true,
+                            "entity": "scene.silta_prieblanda",
+                            "tap_action": {
+                              "action": "toggle"
+                            }
+                          },
+                          {
+                            "type": "custom:hui-entity-badge",
+                            "show_name": true,
+                            "show_state": false,
+                            "show_icon": true,
+                            "entity": "scene.saltibai",
+                            "tap_action": {
+                              "action": "toggle"
+                            }
+                          }
+                        ],
+                        "badges_align": "center",
+                        "badges_wrap": "wrap",
+                        "grid_options": {
+                          "columns": "full",
+                          "rows": "auto"
+                        }
+                      }
+                    ],
+                    "exclude": []
+                  },
+                  "grid_options": {
+                    "columns": 12,
+                    "rows": "auto"
+                  }
+                },
+                {
+                  "type": "custom:auto-entities",
+                  "card": {
+                    "type": "entities",
+                    "title": "Rūbų Urvas"
+                  },
+                  "filter": {
+                    "include": [
+                      {
+                        "options": {},
+                        "area": "rubu_urvas",
+                        "domain": "light"
+                      },
+                      {
+                        "type": "custom:badge-horizontal-container-card",
+                        "badges": [
+                          {
+                            "type": "custom:hui-entity-badge",
+                            "show_name": true,
+                            "show_state": false,
+                            "show_icon": true,
+                            "tap_action": {
+                              "action": "toggle"
+                            },
+                            "entity": "scene.gamyba_3"
+                          },
+                          {
+                            "type": "custom:hui-entity-badge",
+                            "show_name": true,
+                            "show_state": false,
+                            "show_icon": true,
+                            "show_entity_picture": false,
+                            "tap_action": {
+                              "action": "toggle"
+                            },
+                            "entity": "scene.prieblanda_2"
+                          }
+                        ],
+                        "badges_align": "center"
+                      }
+                    ],
+                    "exclude": []
+                  }
+                },
+                {
+                  "type": "custom:auto-entities",
+                  "card": {
+                    "type": "entities",
+                    "title": "Studija"
+                  },
+                  "filter": {
+                    "include": [
+                      {
+                        "options": {},
+                        "area": "studija",
+                        "domain": "light"
+                      },
+                      {
+                        "type": "custom:badge-horizontal-container-card",
+                        "badges": [
+                          {
+                            "type": "custom:hui-entity-badge",
+                            "show_name": true,
+                            "show_state": false,
+                            "show_icon": true,
+                            "entity": "scene.gamyba_2",
+                            "tap_action": {
+                              "action": "toggle"
+                            }
+                          },
+                          {
+                            "type": "custom:hui-entity-badge",
+                            "show_name": true,
+                            "show_state": false,
+                            "show_icon": true,
+                            "entity": "scene.prieblanda",
+                            "tap_action": {
+                              "action": "toggle"
+                            }
+                          },
+                          {
+                            "type": "custom:hui-entity-badge",
+                            "show_name": true,
+                            "show_state": false,
+                            "show_icon": true,
+                            "entity": "scene.ramu",
+                            "tap_action": {
+                              "action": "toggle"
+                            }
+                          }
+                        ],
+                        "badges_align": "center"
+                      }
+                    ],
+                    "exclude": []
+                  }
+                },
+                {
+                  "type": "custom:auto-entities",
+                  "card": {
+                    "type": "entities",
+                    "title": "Miegamasis"
+                  },
+                  "filter": {
+                    "include": [
+                      {
+                        "options": {},
+                        "area": "bedroom",
+                        "domain": "light"
+                      }
+                    ],
+                    "exclude": []
+                  }
+                },
+                {
+                  "type": "custom:auto-entities",
+                  "card": {
+                    "type": "entities",
+                    "title": "Žaidimai"
+                  },
+                  "filter": {
+                    "include": [
+                      {
+                        "options": {},
+                        "area": "zaidimu_kambarys",
+                        "domain": "light"
+                      }
+                    ],
+                    "exclude": []
+                  }
+                }
+              ],
+              "column_span": 1
+            }
+          ],
+          "badges": [
+            {
+              "type": "entity",
+              "show_name": false,
+              "show_state": true,
+              "show_icon": true,
+              "entity": "light.all_lights",
+              "name": {
+                "type": "entity"
+              },
+              "tap_action": {
+                "action": "toggle"
+              }
+            }
+          ],
+          "max_columns": 4,
+          "icon": "mdi:lamps"
+        },
+        {
+          "panel": false,
+          "icon": "mdi:home",
+          "badges": [],
+          "cards": [
+            {
+              "type": "custom:apexcharts-card",
+              "graph_span": "12h",
+              "all_series_config": {
+                "stroke_width": 2
+              },
+              "apex_config": {
+                "tooltip": {
+                  "fixed": {
+                    "enabled": true
+                  },
+                  "x": {
+                    "show": false
+                  }
+                },
+                "legend": {
+                  "show": false
+                }
+              },
+              "header": {
+                "show": true,
+                "show_states": true,
+                "title": "Miegamojo oras"
+              },
+              "series": [
+                {
+                  "entity": "sensor.alpstuga_air_quality_monitor_carbon_dioxide",
+                  "name": "CO2 Ikea",
+                  "yaxis_id": "co2",
+                  "color": "orange",
+                  "group_by": {
+                    "func": "avg",
+                    "duration": "2min"
+                  }
+                },
+                {
+                  "entity": "sensor.bedroom_co2",
+                  "name": "CO2 Esphome",
+                  "yaxis_id": "co2",
+                  "color": "orange",
+                  "group_by": {
+                    "func": "avg",
+                    "duration": "2min"
+                  }
+                },
+                {
+                  "entity": "sensor.bedroom_thermometer_humidity",
+                  "name": "Drėgmė Shelly",
+                  "yaxis_id": "humid",
+                  "color": "lightblue",
+                  "group_by": {
+                    "func": "avg",
+                    "duration": "2min"
+                  }
+                },
+                {
+                  "entity": "sensor.alpstuga_air_quality_monitor_humidity",
+                  "name": "Drėgmė Ikea",
+                  "yaxis_id": "humid",
+                  "color": "lightblue",
+                  "group_by": {
+                    "func": "avg",
+                    "duration": "2min"
+                  }
+                },
+                {
+                  "entity": "sensor.bedroom_humidity",
+                  "name": "Drėgmė Esphome",
+                  "yaxis_id": "humid",
+                  "color": "lightblue",
+                  "group_by": {
+                    "func": "avg",
+                    "duration": "2min"
+                  }
+                }
+              ],
+              "yaxis": [
+                {
+                  "id": "co2",
+                  "min": "|-100|",
+                  "max": "|+100|"
+                },
+                {
+                  "id": "humid",
+                  "min": "|-5|",
+                  "max": "|+5|",
+                  "opposite": true
+                }
+              ]
+            },
+            {
+              "type": "custom:apexcharts-card",
+              "graph_span": "12h",
+              "all_series_config": {
+                "stroke_width": 2
+              },
+              "apex_config": {
+                "tooltip": {
+                  "fixed": {
+                    "enabled": true
+                  },
+                  "x": {
+                    "show": false
+                  }
+                },
+                "legend": {
+                  "show": false
+                }
+              },
+              "header": {
+                "show": true,
+                "show_states": true,
+                "title": "Svetainės oras"
+              },
+              "series": [
+                {
+                  "entity": "sensor.living_room_co2_scd4x",
+                  "name": "CO2",
+                  "yaxis_id": "co2",
+                  "color": "orange",
+                  "group_by": {
+                    "func": "avg",
+                    "duration": "2min"
+                  }
+                },
+                {
+                  "entity": "sensor.e2m_bedroom_temperature_hum",
+                  "name": "Drėgmė Enocean",
+                  "yaxis_id": "humid",
+                  "color": "lightblue",
+                  "group_by": {
+                    "func": "avg",
+                    "duration": "2min"
+                  }
+                },
+                {
+                  "entity": "sensor.living_room_humidity_bme280",
+                  "name": "Drėgmė bme280",
+                  "yaxis_id": "humid",
+                  "color": "lightblue",
+                  "group_by": {
+                    "func": "avg",
+                    "duration": "2min"
+                  }
+                },
+                {
+                  "entity": "sensor.living_room_humidity_scd4x",
+                  "name": "Drėgmė scd4x",
+                  "yaxis_id": "humid",
+                  "color": "lightblue",
+                  "group_by": {
+                    "func": "avg",
+                    "duration": "2min"
+                  }
+                },
+                {
+                  "entity": "sensor.shelly_blu_h_t_45eb_humidity",
+                  "name": "Drėgmė Blu",
+                  "yaxis_id": "humid",
+                  "color": "lightblue",
+                  "group_by": {
+                    "func": "avg",
+                    "duration": "2min"
+                  }
+                }
+              ],
+              "yaxis": [
+                {
+                  "id": "co2",
+                  "min": "|-100|",
+                  "max": "|+100|"
+                },
+                {
+                  "id": "humid",
+                  "min": "|-5|",
+                  "max": "|+5|",
+                  "opposite": true
+                }
+              ]
+            },
+            {
+              "type": "vertical-stack",
+              "cards": [
+                {
+                  "type": "entities",
+                  "entities": [
+                    {
+                      "entity": "sensor.living_room_thermometer_battery"
+                    },
+                    {
+                      "entity": "sensor.bedroom_thermometer_battery"
+                    },
+                    {
+                      "entity": "sensor.e2m_bedroom_temperature_last_seen",
+                      "name": "Bedroom Thermometer Last Seen"
+                    }
+                  ],
+                  "title": "Baterijos",
+                  "state_color": true
+                }
+              ]
+            },
+            {
+              "type": "tile",
+              "entity": "button.wake_on_lan_b4_2e_99_a0_87_1b",
+              "name": "fortuna",
+              "vertical": false,
+              "features": [
+                {
+                  "type": "button"
+                }
+              ],
+              "features_position": "bottom"
+            },
+            {
+              "type": "entities",
+              "entities": [
+                {
+                  "entity": "sensor.soil_moisture_sensor_48e663fffe3000c1_air_humidity",
+                  "name": "Air Humidity"
+                },
+                {
+                  "entity": "sensor.soil_moisture_sensor_48e663fffe3000c1_air_temperature",
+                  "name": "Air Temperature"
+                },
+                {
+                  "entity": "sensor.soil_moisture_sensor_48e663fffe3000c1_battery_voltage",
+                  "name": "Battery Voltage"
+                },
+                {
+                  "entity": "sensor.soil_moisture_sensor_48e663fffe3000c1_soil_adc",
+                  "name": "Soil ADC"
+                }
+              ],
+              "title": "Monstera"
+            }
+          ]
+        },
+        {
+          "type": "sections",
+          "max_columns": 4,
+          "icon": "mdi:car-seat-heater",
+          "path": "",
+          "sections": [
+            {
+              "type": "grid",
+              "cards": [
+                {
+                  "type": "custom:scheduler-card",
+                  "title": "Šildymas"
+                },
+                {
+                  "type": "thermostat",
+                  "entity": "climate.kondicionierius",
+                  "features": [
+                    {
+                      "type": "climate-hvac-modes"
+                    }
+                  ]
+                },
+                {
+                  "type": "history-graph",
+                  "entities": [
+                    {
+                      "entity": "sensor.bedroom_temperature"
+                    },
+                    {
+                      "entity": "climate.kondicionierius"
+                    }
+                  ],
+                  "hours_to_show": 24
+                }
+              ]
+            }
+          ],
+          "cards": []
+        },
+        {
+          "type": "sections",
+          "max_columns": 4,
+          "icon": "mdi:weather-partly-cloudy",
+          "path": "",
+          "sections": [
+            {
+              "type": "grid",
+              "cards": [
+                {
+                  "show_current": true,
+                  "show_forecast": true,
+                  "type": "weather-forecast",
+                  "entity": "weather.kambarys_ezero_dugne",
+                  "forecast_type": "hourly",
+                  "round_temperature": true,
+                  "forecast_slots": 6
+                },
+                {
+                  "show_current": false,
+                  "show_forecast": true,
+                  "type": "weather-forecast",
+                  "entity": "weather.kambarys_ezero_dugne",
+                  "forecast_type": "daily",
+                  "forecast_slots": 6
+                },
+                {
+                  "type": "history-graph",
+                  "entities": [
+                    {
+                      "entity": "sensor.shelly_blu_h_t_45eb_temperature"
+                    },
+                    {
+                      "entity": "sensor.shelly_blu_h_t_45eb_humidity"
+                    }
+                  ],
+                  "hours_to_show": 24
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "sections",
+          "max_columns": 4,
+          "icon": "mdi:rabbit-variant",
+          "path": "",
+          "sections": [
+            {
+              "type": "grid",
+              "cards": [
+                {
+                  "type": "history-graph",
+                  "entities": [
+                    {
+                      "entity": "sensor.living_room_thermometer_temperature"
+                    },
+                    {
+                      "entity": "sensor.studio_temperature_bme280"
+                    },
+                    {
+                      "entity": "sensor.studio_temperature_scd4x"
+                    }
+                  ],
+                  "hours_to_show": 24
+                },
+                {
+                  "type": "history-graph",
+                  "entities": [
+                    "sensor.studio_co2_scd4x"
+                  ],
+                  "hours_to_show": 24
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

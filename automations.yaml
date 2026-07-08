@@ -19,16 +19,16 @@
       button1_event: event.bilresa_dual_button_button_1
       button2_event: event.bilresa_dual_button_button_2
       button1_single:
-      - action: light.toggle
+      - action: scene.turn_on
         metadata: {}
         target:
-          entity_id: light.kajplats_e27_cws_globe_1055lm_2
+          entity_id: scene.silta_prieblanda
         data: {}
       button1_double:
-      - action: light.toggle
+      - action: scene.turn_on
         metadata: {}
         target:
-          entity_id: light.all_lights
+          entity_id: scene.gamyba
         data: {}
       button1_while_holding:
       - action: light.turn_on
@@ -45,3 +45,141 @@
         data:
           brightness_step_pct: -10
       button2_holding_interval: 0.3
+      button2_single:
+      - action: light.turn_off
+        metadata: {}
+        data: {}
+        target:
+          entity_id: light.all_lights
+- id: '1768669485117'
+  alias: Šviesų išjungimas naktį
+  description: ''
+  triggers:
+  - trigger: time
+    at: 01:00:00
+    weekday:
+    - sun
+    - mon
+    - tue
+    - wed
+    - thu
+    - fri
+    - sat
+  conditions: []
+  actions:
+  - action: light.turn_off
+    metadata: {}
+    target:
+      entity_id: light.all_lights
+    data: {}
+  mode: single
+- id: '1771784401627'
+  alias: Žalio pultelio šviesos valdymas
+  description: ''
+  use_blueprint:
+    path: jhol-byte/Ikea_bilresa_scroll_wheel.yaml
+    input:
+      remote: 69df3ffdfcccb8e1ee98426e1330f346
+      scroll_wheel_target_ch1:
+      - light.kajplats_e27_cws_globe_1055lm_3
+      scroll_wheel_mode_ext_ch1: instant
+      click_action_ch1:
+      - action: light.toggle
+        metadata: {}
+        target:
+          entity_id: light.kajplats_e27_cws_globe_1055lm_3
+        data: {}
+      click_action_ch2:
+      - action: media_player.play_media
+        target:
+          entity_id: media_player.nestmini2570
+        data:
+          announce: true
+          media:
+            media_content_id: media-source://media_source/local/signal-2026-02-28-12-22-28-293.m4a
+            media_content_type: music
+            metadata: {}
+      - action: light.turn_on
+        metadata: {}
+        target:
+          entity_id: light.kajplats_e27_cws_globe_1055lm_3
+        data:
+          rgb_color:
+          - 0
+          - 249
+          - 0
+          brightness_pct: 48
+- id: '1771787526851'
+  alias: Raudono pultelio šviesos valdymas
+  description: ''
+  use_blueprint:
+    path: jhol-byte/Ikea_bilresa_scroll_wheel.yaml
+    input:
+      remote: 16a3564c9cb220a0373f7d28ff122d9f
+      scroll_wheel_target_ch1:
+      - light.kajplats_e27_cws_globe_1055lm_3
+      scroll_wheel_mode_ext_ch1: relaxed
+      click_action_ch1:
+      - action: light.toggle
+        metadata: {}
+        target:
+          entity_id: light.kajplats_e27_cws_globe_1055lm_3
+        data: {}
+- id: '1772098712107'
+  alias: Rūbų urvo šviesos
+  description: ''
+  use_blueprint:
+    path: Skaronator/ikea-bilresa-dual-button.yaml
+    input:
+      button1_event: event.bilresa_dual_button_button_1_3
+      button2_event: event.bilresa_dual_button_button_2_3
+      button1_single:
+      - action: scene.turn_on
+        metadata: {}
+        target:
+          entity_id: scene.prieblanda_2
+        data: {}
+      button2_single:
+      - action: light.turn_off
+        metadata: {}
+        target:
+          area_id: rubu_urvas
+        data: {}
+      button1_double:
+      - action: scene.turn_on
+        metadata: {}
+        target:
+          entity_id: scene.gamyba_3
+        data: {}
+- id: '1772806600717'
+  alias: Studijos šviesos
+  description: ''
+  use_blueprint:
+    path: Skaronator/ikea-bilresa-dual-button.yaml
+    input:
+      button1_event: event.bilresa_dual_button_button_1_2
+      button2_event: event.bilresa_dual_button_button_2_2
+      button1_single:
+      - action: scene.turn_on
+        metadata: {}
+        target:
+          entity_id: scene.prieblanda
+        data: {}
+      button2_single:
+      - action: light.turn_off
+        metadata: {}
+        target:
+          area_id: studija
+        data: {}
+      button1_double:
+      - action: scene.turn_on
+        metadata: {}
+        target:
+          entity_id: scene.gamyba_2
+        data: {}
+      button1_long_press:
+      - action: scene.turn_on
+        metadata: {}
+        target:
+          entity_id: scene.ramu
+        data: {}

@@ -5,154 +5,49 @@
   "data": {
     "schedules": [
       {
-        "schedule_id": "9dd7c6",
+        "schedule_id": "66c664",
         "timeslots": [
           {
             "start": "00:00:00",
-            "stop": "07:00:00",
-            "conditions": [],
-            "condition_type": null,
-            "track_conditions": false,
-            "actions": [
-              {
-                "service": "climate.set_temperature",
-                "entity_id": "climate.bedroom_radiator",
-                "service_data": {
-                  "hvac_mode": "heat",
-                  "temperature": 19
-                }
-              }
-            ]
-          },
-          {
-            "start": "07:00:00",
-            "stop": "08:30:00",
-            "conditions": [],
-            "condition_type": null,
-            "track_conditions": false,
-            "actions": [
-              {
-                "service": "climate.set_temperature",
-                "entity_id": "climate.bedroom_radiator",
-                "service_data": {
-                  "hvac_mode": "heat",
-                  "temperature": 23
-                }
-              }
-            ]
-          },
-          {
-            "start": "08:30:00",
-            "stop": "00:00:00",
-            "conditions": [],
-            "condition_type": null,
-            "track_conditions": false,
-            "actions": [
-              {
-                "service": "climate.set_temperature",
-                "entity_id": "climate.bedroom_radiator",
-                "service_data": {
-                  "hvac_mode": "heat",
-                  "temperature": 19
-                }
-              }
-            ]
-          }
-        ],
-        "weekdays": [
-          "daily"
-        ],
-        "start_date": null,
-        "end_date": null,
-        "repeat_type": "repeat",
-        "name": null,
-        "enabled": false
-      },
-      {
-        "schedule_id": "8d56a8",
-        "timeslots": [
-          {
-            "start": "00:00:00",
-            "stop": "07:00:00",
-            "conditions": [],
-            "condition_type": null,
-            "track_conditions": false,
-            "actions": [
-              {
-                "service": "climate.set_temperature",
-                "entity_id": "climate.living_room_radiator",
-                "service_data": {
-                  "hvac_mode": "heat",
-                  "temperature": 20
-                }
-              }
-            ]
-          },
-          {
-            "start": "07:00:00",
-            "stop": "09:00:00",
-            "conditions": [],
-            "condition_type": null,
-            "track_conditions": false,
-            "actions": [
-              {
-                "service": "climate.set_temperature",
-                "entity_id": "climate.living_room_radiator",
-                "service_data": {
-                  "hvac_mode": "heat",
-                  "temperature": 23
-                }
-              }
-            ]
-          },
-          {
-            "start": "09:00:00",
             "stop": "18:00:00",
             "conditions": [],
             "condition_type": null,
             "track_conditions": false,
             "actions": [
               {
-                "service": "climate.set_temperature",
-                "entity_id": "climate.living_room_radiator",
-                "service_data": {
-                  "hvac_mode": "heat",
-                  "temperature": 20
-                }
+                "service": "climate.turn_off",
+                "entity_id": "climate.kondicionierius",
+                "service_data": {}
               }
             ]
           },
           {
             "start": "18:00:00",
-            "stop": "21:00:00",
+            "stop": "22:00:00",
             "conditions": [],
             "condition_type": null,
             "track_conditions": false,
             "actions": [
               {
-                "service": "climate.set_temperature",
-                "entity_id": "climate.living_room_radiator",
+                "service": "climate.set_hvac_mode",
+                "entity_id": "climate.kondicionierius",
                 "service_data": {
-                  "hvac_mode": "heat",
-                  "temperature": 23
+                  "hvac_mode": "cool"
                 }
               }
             ]
           },
           {
-            "start": "21:00:00",
+            "start": "22:00:00",
             "stop": "00:00:00",
             "conditions": [],
             "condition_type": null,
             "track_conditions": false,
             "actions": [
               {
-                "service": "climate.set_temperature",
-                "entity_id": "climate.living_room_radiator",
-                "service_data": {
-                  "hvac_mode": "heat",
-                  "temperature": 20
-                }
+                "service": "climate.turn_off",
+                "entity_id": "climate.kondicionierius",
+                "service_data": {}
               }
             ]
           }

@@ -1,0 +1,5 @@
+[outside/temperature]
+address         = 0x05237AE8
+rorg            = 0xA5
+func            = 0x04
+type            = 0x01

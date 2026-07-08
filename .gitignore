@@ -1,9 +1,12 @@
 .HA_VERSION
+.cache
 .cloud
+.ha_run.lock
 .storage/androidtv*
 .storage/application_credentials
 .storage/assist_pipeline.pipelines
 .storage/auth*
+.storage/backup
 .storage/bluetooth.*
 .storage/cloud
 .storage/core.*
@@ -15,6 +18,7 @@
 .storage/homeassistant.*
 .storage/http*
 .storage/map
+.storage/mobile_app
 .storage/onboarding
 .storage/person
 .storage/repairs.issue_registry
@@ -34,5 +38,5 @@ scripts.yaml
 secrets.yaml
 tts/
 www/
-zigbee.db
+zigbee.db*
 zigbee2mqtt/
