@@ -1,0 +1,63 @@
+mqtt:
+  sensor:
+    - state_topic: "application/c2d7fa77-43ce-4311-a20c-601008c27fa1/device/48e663fffe3000c1/event/up"
+      name: "Air Humidity"
+      unique_id: lora_48e663fffe3000c1_air_humidity
+      device_class: humidity
+      icon: mdi:water-percent
+      value_template: "{{ value_json.object.air_humidity }}"
+      unit_of_measurement: "%"
+      device:
+        configuration_url: http://lab-rpi.2m.lt:8080/#/tenants/52f14cd4-c6f1-4fbd-8f87-4025e1d49242/applications/c2d7fa77-43ce-4311-a20c-601008c27fa1/devices/48e663fffe3000c1
+        identifiers: 48e663fffe3000c1
+        serial_number: 48e663fffe3000c1
+        manufacturer: Makerfabs
+        name: Soil Moisture Sensor 48e663fffe3000c1
+        model: Gen2
+        
+    - state_topic: "application/c2d7fa77-43ce-4311-a20c-601008c27fa1/device/48e663fffe3000c1/event/up"
+      name: "Air Temperature"
+      unique_id: lora_48e663fffe3000c1_air_temperature
+      device_class: temperature
+      icon: mdi:thermometer
+      value_template: "{{ value_json.object.air_temperature }}"
+      unit_of_measurement: "°C"
+      device:
+        configuration_url: http://lab-rpi.2m.lt:8080/#/tenants/52f14cd4-c6f1-4fbd-8f87-4025e1d49242/applications/c2d7fa77-43ce-4311-a20c-601008c27fa1/devices/48e663fffe3000c1
+        identifiers: 48e663fffe3000c1
+        serial_number: 48e663fffe3000c1
+        manufacturer: Makerfabs
+        name: Soil Moisture Sensor 48e663fffe3000c1
+        model: Gen2
+        
+    - state_topic: "application/c2d7fa77-43ce-4311-a20c-601008c27fa1/device/48e663fffe3000c1/event/up"
+      name: "Battery Voltage"
+      unique_id: lora_48e663fffe3000c1_battery_voltage
+      device_class: voltage
+      icon: mdi:current-dc
+      value_template: "{{ value_json.object.battery_voltage }}"
+      suggested_display_precision: 1
+      unit_of_measurement: "V"
+      device:
+        configuration_url: http://lab-rpi.2m.lt:8080/#/tenants/52f14cd4-c6f1-4fbd-8f87-4025e1d49242/applications/c2d7fa77-43ce-4311-a20c-601008c27fa1/devices/48e663fffe3000c1
+        identifiers: 48e663fffe3000c1
+        serial_number: 48e663fffe3000c1
+        manufacturer: Makerfabs
+        name: Soil Moisture Sensor 48e663fffe3000c1
+        model: Gen2
+        
+    - state_topic: "application/c2d7fa77-43ce-4311-a20c-601008c27fa1/device/48e663fffe3000c1/event/up"
+      name: "Soil ADC"
+      unique_id: lora_48e663fffe3000c1_soil_adc
+      device_class: voltage
+      icon: mdi:sprout
+      value_template: "{{ value_json.object.soil_adc / 1000 }}"
+      suggested_display_precision: 3
+      unit_of_measurement: "V"
+      device:
+        configuration_url: http://lab-rpi.2m.lt:8080/#/tenants/52f14cd4-c6f1-4fbd-8f87-4025e1d49242/applications/c2d7fa77-43ce-4311-a20c-601008c27fa1/devices/48e663fffe3000c1
+        identifiers: 48e663fffe3000c1
+        serial_number: 48e663fffe3000c1
+        manufacturer: Makerfabs
+        name: Soil Moisture Sensor 48e663fffe3000c1
+        model: Gen2
